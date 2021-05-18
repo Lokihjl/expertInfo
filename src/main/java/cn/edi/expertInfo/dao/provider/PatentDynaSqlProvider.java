@@ -9,7 +9,7 @@ import cn.edi.expertInfo.domain.Patent;
 
 public class PatentDynaSqlProvider {
 	// 动态插入
-			public String insertPatent(Patent patent){
+			public String insert(Patent patent){
 				
 				return new SQL(){
 					{
@@ -24,7 +24,7 @@ public class PatentDynaSqlProvider {
 				}.toString();
 			}	
 			// 动态更新
-			public String updatePatent(Patent patent){
+			public String update(Patent patent){
 				
 				return new SQL(){
 					{

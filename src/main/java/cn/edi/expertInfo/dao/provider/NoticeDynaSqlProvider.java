@@ -8,7 +8,7 @@ import cn.edi.expertInfo.domain.Notice;
 
 public class NoticeDynaSqlProvider {
 			// 动态插入
-			public String insert_Notice(Notice job){
+			public String insert(Notice job){
 				
 				return new SQL(){
 					{
@@ -31,7 +31,7 @@ public class NoticeDynaSqlProvider {
 				}.toString();
 			}	
 			// 动态更新
-			public String update_Notice(Notice job){
+			public String update(Notice job){
 				
 				return new SQL(){
 					{

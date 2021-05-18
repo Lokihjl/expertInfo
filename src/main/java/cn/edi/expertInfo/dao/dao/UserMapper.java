@@ -26,13 +26,13 @@ public interface UserMapper extends Mapper<User> {
   User get_login(@Param("loginname") String loginname,
       @Param("password") String password);
 
-  @SelectProvider(type = UserDynaSqlProvider.class, method = "insert_Notice")
+  @SelectProvider(type = UserDynaSqlProvider.class, method = "insert")
   void insert_Info(User employee);
 
   @Select("select * from " + Constants.USERTABLE + " where id = #{id}")
   User get_Info(Integer id);
 
-  @SelectProvider(type = UserDynaSqlProvider.class, method = "update_Notice")
+  @SelectProvider(type = UserDynaSqlProvider.class, method = "update")
   void update_Info(User employee);
 
   // 根据id删除部门

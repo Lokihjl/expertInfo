@@ -27,13 +27,13 @@ public interface ExperienceMapper extends Mapper<Experience> {
   List<Experience> selectLikeAllExperience(String content);
 
 
-  @SelectProvider(type = ExperienceDynaSqlProvider.class, method = "insertExperience")
+  @SelectProvider(type = ExperienceDynaSqlProvider.class, method = "insert")
   void save(Experience experience);
 
   @Select("select * from " + Constants.EXPERIENCETABLE + " where id = #{id}")
   Experience get_Info(Integer id);
 
-  @SelectProvider(type = ExperienceDynaSqlProvider.class, method = "updateExperience")
+  @SelectProvider(type = ExperienceDynaSqlProvider.class, method = "update")
   void update_Info(Experience experience);
 
   // 根据id删除部门

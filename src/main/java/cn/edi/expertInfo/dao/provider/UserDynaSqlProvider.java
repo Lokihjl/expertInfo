@@ -9,7 +9,7 @@ import cn.edi.expertInfo.domain.User;
 
 public class UserDynaSqlProvider {
 			// 动态插入
-			public String insert_Notice(User job){
+			public String insert(User job){
 				
 				return new SQL(){
 					{
@@ -32,7 +32,7 @@ public class UserDynaSqlProvider {
 				}.toString();
 			}	
 			// 动态更新
-			public String update_Notice(User job){
+			public String update(User job){
 				
 				return new SQL(){
 					{

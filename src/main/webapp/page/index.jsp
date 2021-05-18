@@ -77,13 +77,13 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="${ctx }/employee/list?pageNum=1&pageSize=6">
+                        <a _href="${ctx }/expericence/list?pageNum=1&pageSize=6">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>专家与用户的信息列表</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="${ctx }/employee/add">
+                        <a _href="${ctx }/expericence/add">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>添加专家与用户的信息</cite>
                         </a>
@@ -134,27 +134,6 @@
                     </li >
                    
                    
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont">&#xe6b4;</i>
-                    <cite>下载中心</cite>
-                    <i class="iconfont nav_right">&#xe697;</i>
-                </a>
-                <ul class="sub-menu">
-                    <li>
-                        <a _href="${ctx }/document/list?pageNum=1&pageSize=6">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>文档查询</cite>
-                        </a>
-                    </li>
-                    <li>
-                        <a _href="${ctx }/document/add">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>上传文档</cite>
-                        </a>
-                    </li>
                 </ul>
             </li>
 

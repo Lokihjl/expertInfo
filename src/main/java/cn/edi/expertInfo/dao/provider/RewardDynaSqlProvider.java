@@ -9,7 +9,7 @@ import cn.edi.expertInfo.domain.Reward;
 public class RewardDynaSqlProvider {
 	
 		// 动态插入
-		public String insertReward(Reward reward){
+		public String insert(Reward reward){
 			
 			return new SQL(){
 				{
@@ -24,7 +24,7 @@ public class RewardDynaSqlProvider {
 			}.toString();
 		}	
 		// 动态更新
-		public String updateDept(Reward reward){
+		public String update(Reward reward){
 			
 			return new SQL(){
 				{

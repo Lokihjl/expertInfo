@@ -19,13 +19,13 @@ public interface NoticeMapper extends Mapper<Notice> {
       + "  where title like CONCAT('%',#{content},'%') order by createDate DESC")
   List<Notice> get_LikeList(String content);
 
-  @SelectProvider(type = NoticeDynaSqlProvider.class, method = "insert_Notice")
+  @SelectProvider(type = NoticeDynaSqlProvider.class, method = "insert")
   void insert_Info(Notice employee);
 
   @Select("select * from " + Constants.NOTICETABLE + " where id = #{id}")
   Notice get_Info(Integer id);
 
-  @SelectProvider(type = NoticeDynaSqlProvider.class, method = "update_Notice")
+  @SelectProvider(type = NoticeDynaSqlProvider.class, method = "update")
   void update_Info(Notice employee);
 
   // 根据id删除部门
