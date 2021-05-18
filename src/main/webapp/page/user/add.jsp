@@ -67,8 +67,8 @@
             </label>
             <div class="layui-input-inline">
                 <select name="level" lay-verify="required" lay-search="">
-                    <option value="1">人事</option>
-                    <option value="0">主管</option>
+                    <option value="1">专家</option>
+                    <option value="0">管理员</option>
                 </select>
             </div>
         </div>
