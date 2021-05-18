@@ -6,11 +6,13 @@ public class Constants {
 
   // 数据库表常量
   public static final String USERTABLE = "user";
-  public static final String DEPTTABLE = "dept";
-  public static final String JOBTABLE = "job";
-  public static final String EMPLOYEETABLE = "employee";
+  public static final String REWARDTABLE = "reward";
+  public static final String CATEGORYTABLE = "category";
+  public static final String EXPERTTABLE = "expert";
   public static final String NOTICETABLE = "notice";
-  public static final String DOCUMENTTABLE = "document";
+  public static final String PAPERTABLE = "paper";
+  public static final String PATENTABLE = "patent";
+  public static final String EXPERIENCETABLE = "experience";
 
   // 登录
   public static final String LOGIN = "loginForm";

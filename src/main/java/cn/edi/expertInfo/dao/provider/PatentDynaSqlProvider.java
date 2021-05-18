@@ -1,7 +1,7 @@
 package cn.edi.expertInfo.dao.provider;
 
 
-import static cn.edi.expertInfo.util.Constants.JOBTABLE;
+import static cn.edi.expertInfo.util.Constants.PATENTABLE;
 
 import org.apache.ibatis.jdbc.SQL;
 
@@ -9,30 +9,30 @@ import cn.edi.expertInfo.domain.Patent;
 
 public class PatentDynaSqlProvider {
 	// 动态插入
-			public String insertDept(Patent job){
+			public String insertPatent(Patent patent){
 				
 				return new SQL(){
 					{
-						INSERT_INTO(JOBTABLE);
-						if(job.getName() != null && !job.getName().equals("")){
+						INSERT_INTO(PATENTABLE);
+						if(patent.getName() != null && !patent.getName().equals("")){
 							VALUES("name", "#{name}");
 						}
-						if(job.getRemark() != null && !job.getRemark().equals("")){
+						if(patent.getRemark() != null && !patent.getRemark().equals("")){
 							VALUES("remark", "#{remark}");
 						}
 					}
 				}.toString();
 			}	
 			// 动态更新
-			public String updateDept(Patent job){
+			public String updatePatent(Patent patent){
 				
 				return new SQL(){
 					{
-						UPDATE(JOBTABLE);
-						if(job.getName() != null){
+						UPDATE(PATENTABLE);
+						if(patent.getName() != null){
 							SET(" name = #{name} ");
 						}
-						if(job.getRemark() != null){
+						if(patent.getRemark() != null){
 							SET(" remark = #{remark} ");
 						}
 						WHERE(" id = #{id} ");

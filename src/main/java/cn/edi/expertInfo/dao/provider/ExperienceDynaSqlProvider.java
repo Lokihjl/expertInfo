@@ -1,46 +1,51 @@
 package cn.edi.expertInfo.dao.provider;
 
+import org.apache.ibatis.jdbc.SQL;
+
+import cn.edi.expertInfo.domain.Experience;
+import static cn.edi.expertInfo.util.Constants.EXPERTTABLE;
+
 public class ExperienceDynaSqlProvider {
 	
-//	// 动态插入
-//		public String insert(Expert dept){
-//			
-//			return new SQL(){
-//				{
-//					INSERT_INTO(DOCUMENTTABLE);
-//					if(dept.getTitle() != null ){
-//						VALUES("title", "#{title}");
-//					}
-//					if(dept.getRemark() != null ){
-//						VALUES("remark", "#{remark}");
-//					}
-//					if(dept.getCreateDate() != null ){
-//						VALUES("create_date", "#{create_date}");
-//					}
-//					if(dept.getUserId() != null ){
-//						VALUES("user_id", "#{user_id}");
-//					}
-//					if(dept.getFilename() != null ){
-//						VALUES("filename", "#{filename}");
-//					}
-//				}
-//			}.toString();
-//		}	
-//		// 动态更新
-//		public String update(Expert dept){
-//			
-//			return new SQL(){
-//				{
-//					UPDATE(DOCUMENTTABLE);
-//					if(dept.getTitle() != null){
-//						SET(" title = #{title} ");
-//					}
-//				
-//					if(dept.getRemark() != null){
-//						SET(" remark = #{remark} ");
-//					}
-//					WHERE(" id = #{id} ");
-//				}
-//			}.toString();
-//		}
+	// 动态插入
+		public String insert(Experience experience){
+			
+			return new SQL(){
+				{
+					INSERT_INTO(EXPERTTABLE);
+					if(experience.getTitle() != null ){
+						VALUES("title", "#{title}");
+					}
+					if(experience.getRemark() != null ){
+						VALUES("remark", "#{remark}");
+					}
+					if(experience.getDegree() != null ){
+						VALUES("degree", "#{degree}");
+					}
+					if(experience.getEducation() != null ){
+						VALUES("education", "#{education}");
+					}
+					if(experience.getPosition() != null ){
+						VALUES("position", "#{position}");
+					}
+				}
+			}.toString();
+		}	
+		// 动态更新
+		public String update(Experience experience){
+			
+			return new SQL(){
+				{
+					UPDATE(EXPERTTABLE);
+					if(experience.getTitle() != null){
+						SET(" title = #{title} ");
+					}
+				
+					if(experience.getRemark() != null){
+						SET(" remark = #{remark} ");
+					}
+					WHERE(" id = #{id} ");
+				}
+			}.toString();
+		}
 }

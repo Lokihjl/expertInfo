@@ -15,26 +15,26 @@ import tk.mybatis.mapper.common.Mapper;
 
 public interface PatentMapper extends Mapper<Patent> {
 
-  @Select("select * from " + Constants.JOBTABLE + " order by id ASC ")
+  @Select("select * from " + Constants.PATENTABLE + " order by id ASC ")
   List<Patent> get_List();
 
   @Select(
-      "select * from " + Constants.JOBTABLE
+      "select * from " + Constants.PATENTABLE
           + "  where name like CONCAT('%',#{content},'%') order by id ASC")
   List<Patent> get_LikeList(String content);
 
 
-  @SelectProvider(type = PatentDynaSqlProvider.class, method = "insertDept")
+  @SelectProvider(type = PatentDynaSqlProvider.class, method = "insert")
   void insert_Info(Patent job);
 
-  @Select("select * from " + Constants.JOBTABLE + " where id = #{id}")
+  @Select("select * from " + Constants.PATENTABLE + " where id = #{id}")
   Patent get_Info(Integer id);
 
-  @SelectProvider(type = PatentDynaSqlProvider.class, method = "updateDept")
+  @SelectProvider(type = PatentDynaSqlProvider.class, method = "update")
   void update_Info(Patent job);
 
   // 根据id删除部门
-  @Delete(" delete from " + Constants.JOBTABLE + " where id = #{id} ")
+  @Delete(" delete from " + Constants.PATENTABLE + " where id = #{id} ")
   void delete_Info(Integer id);
 
   List<PatentResDTO> findAll(@Param("content") String content);

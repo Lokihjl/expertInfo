@@ -15,27 +15,25 @@ import tk.mybatis.mapper.common.Mapper;
 
 public interface ExpertMapper extends Mapper<Expert> {
 
-  //查询
-  @Select("select * from " + Constants.DOCUMENTTABLE + " order by id ASC")
-  List<Expert> get_List();
+	// 查询
+	@Select("select * from " + Constants.EXPERTTABLE + " order by id ASC")
+	List<Expert> get_List();
 
-  @Select("select * from " + Constants.DOCUMENTTABLE
-      + " where title like CONCAT('%',#{content},'%') order by id ASC")
-  List<Expert> get_LikeList(String content);
+	@Select("select * from " + Constants.EXPERTTABLE + " where title like CONCAT('%',#{content},'%') order by id ASC")
+	List<Expert> get_LikeList(String content);
 
+	@SelectProvider(type = ExpertDynaSqlProvider.class, method = "insert")
+	void insert_Info(Expert dept);
 
-  @SelectProvider(type = ExpertDynaSqlProvider.class, method = "insert")
-  void insert_Info(Expert dept);
+	@Select("select * from " + Constants.EXPERTTABLE + " where id = #{id}")
+	Expert get_Info(Integer id);
 
-  @Select("select * from " + Constants.DOCUMENTTABLE + " where id = #{id}")
-  Expert get_Info(Integer id);
+	@SelectProvider(type = ExpertDynaSqlProvider.class, method = "update")
+	void update_Info(Expert dept);
 
-  @SelectProvider(type = ExpertDynaSqlProvider.class, method = "update")
-  void update_Info(Expert dept);
+	// 根据id删除部门
+	@Delete(" delete from " + Constants.EXPERTTABLE + " where id = #{id} ")
+	void delete_Info(Integer id);
 
-  // 根据id删除部门
-  @Delete(" delete from " + Constants.DOCUMENTTABLE + " where id = #{id} ")
-  void delete_Info(Integer id);
-
-  List<ExpertResDTO> selectById(@Param("content") String content);
+	List<ExpertResDTO> selectById(@Param("content") String content);
 }
