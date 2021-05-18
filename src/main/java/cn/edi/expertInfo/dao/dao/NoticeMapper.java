@@ -20,13 +20,13 @@ public interface NoticeMapper extends Mapper<Notice> {
   List<Notice> get_LikeList(String content);
 
   @SelectProvider(type = NoticeDynaSqlProvider.class, method = "insert")
-  void insert_Info(Notice employee);
+  void insert_Info(Notice notice);
 
   @Select("select * from " + Constants.NOTICETABLE + " where id = #{id}")
   Notice get_Info(Integer id);
 
   @SelectProvider(type = NoticeDynaSqlProvider.class, method = "update")
-  void update_Info(Notice employee);
+  void update_Info(Notice notice);
 
   // 根据id删除部门
   @Delete(" delete from " + Constants.NOTICETABLE + " where id = #{id} ")

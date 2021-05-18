@@ -7,6 +7,10 @@ import cn.edi.expertInfo.domain.Experience;
 public interface ExperienceService {
 
   PageInfo getExperience(int pageNum, int pageSize, String content);
-
+  
   void insert(Experience experience, Integer id);
+  
+  int update(Experience experience);
+  
+  int delete(Integer id) ;
 }

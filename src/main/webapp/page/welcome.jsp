@@ -33,20 +33,8 @@
                                                     <cite>${headerr.adminNum}</cite></p>
                                             </a>
                                         </li>
-                                        <li class="layui-col-xs2">
-                                            <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>部门数</h3>
-                                                <p>
-                                                    <cite>${headerr.deptNum}</cite></p>
-                                            </a>
-                                        </li>
-                                        <li class="layui-col-xs2">
-                                            <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>职工数</h3>
-                                                <p>
-                                                    <cite>${headerr.employeeNum}</cite></p>
-                                            </a>
-                                        </li>
+                                        
+                                        
                                         <li class="layui-col-xs2">
                                             <a href="javascript:;" class="x-admin-backlog-body">
                                                 <h3>公告数</h3>
@@ -54,13 +42,7 @@
                                                     <cite>${headerr.noticeNum}</cite></p>
                                             </a>
                                         </li>
-                                        <li class="layui-col-xs2">
-                                            <a href="javascript:;" class="x-admin-backlog-body">
-                                                <h3>文件数</h3>
-                                                <p>
-                                                    <cite>${headerr.docNum}</cite></p>
-                                            </a>
-                                        </li>
+                                        
                                     </ul>
                                 </div>
                             </div>

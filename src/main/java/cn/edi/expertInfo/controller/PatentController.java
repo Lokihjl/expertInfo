@@ -19,35 +19,28 @@ import cn.edi.expertInfo.service.PatentService;
 public class PatentController {
 
   @Autowired
-  @Qualifier("RainService")
-  private PatentService rainservice;
-
-  @Autowired
-  ExpertService employeeService;
-
-  @Autowired
-  PaperService jobService;
+  PatentService patentService;
 
   // 如果在目录下输入为空，则跳转到指定链接
-  @RequestMapping(value = "/job/")
+  @RequestMapping(value = "/patent/")
   public ModelAndView index2(ModelAndView mv) {
-    mv.setViewName("job/list");
+    mv.setViewName("patent/list");
     return mv;
   }
 
   // 如果在目录下输入任何不存在的参数，则跳转到list
-  @RequestMapping(value = "/job/{formName}")
+  @RequestMapping(value = "/patent/{formName}")
   public String index2(@PathVariable String formName) {
-    String blank = "/job/list";
+    String blank = "/patent/list";
     return blank;
   }
 
-  @RequestMapping(value = "/job/list", method = RequestMethod.GET)
+  @RequestMapping(value = "/patent/list", method = RequestMethod.GET)
   public String index(Model model, String content, int pageNum, int pageSize) {
-    PageInfo pageInfo = jobService.findAll(content,pageNum,pageSize);
+    PageInfo pageInfo = patentService.findAll(content,pageNum,pageSize);
     model.addAttribute("list", pageInfo.getList());
     model.addAttribute("pageInfo", pageInfo);
-    return "job/list";
+    return "patent/list";
   }
 
 //  @RequestMapping(value = "/job/add", method = RequestMethod.GET)

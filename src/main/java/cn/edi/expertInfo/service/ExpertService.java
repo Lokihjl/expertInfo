@@ -1,23 +1,19 @@
 package cn.edi.expertInfo.service;
 
-import java.util.Map;
-
 import com.github.pagehelper.PageInfo;
 
 import cn.edi.expertInfo.domain.Expert;
 
 public interface ExpertService {
 
-  Map<String,Object> getInfo();
+	PageInfo getExpert(String content, int pageNum, int pageSize);
 
-  PageInfo getEmployee(int pageNum, int pageSize);
+	void insert(Expert expert);
 
-  void insert(Expert employee);
+	void update(Expert expert);
 
-  void update(Expert employee);
-
-  PageInfo getEmployee(String content, int pageNum, int pageSize);
-
-  Expert getEmployee(Integer id);
+	Expert getExpert(Integer id);
+	
+	int delete(Integer id) ;
 
 }

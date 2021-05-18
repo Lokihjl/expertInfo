@@ -4,9 +4,10 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
-import cn.edi.expertInfo.dao.dao.ExpertMapper;
+import cn.edi.expertInfo.dao.dao.PaperMapper;
 import cn.edi.expertInfo.domain.Paper;
 import cn.edi.expertInfo.service.PaperService;
 
@@ -14,24 +15,31 @@ import cn.edi.expertInfo.service.PaperService;
 public class PaperServiceImpl implements PaperService {
 
 	@Resource
-	ExpertMapper documentMapper;
+	PaperMapper paperMapper;
 
 	@Override
-	public void insert(Paper job) {
-		// TODO Auto-generated method stub
-
+	public void insert(Paper paper) {
+		paperMapper.insert(paper);
 	}
 
 	@Override
-	public void update(Paper job) {
-		// TODO Auto-generated method stub
-
+	public void update(Paper paper) {
+		paperMapper.update_Info(paper);
 	}
 
 	@Override
 	public PageInfo findAll(String content, int pageNum, int pageSize) {
-		// TODO Auto-generated method stub
-		return null;
+		return PageHelper.startPage(pageNum, pageSize, true).doSelectPageInfo(() -> paperMapper.get_LikeList(content));
+	}
+
+	@Override
+	public Paper getPager(Integer id) {
+		return paperMapper.get_Info(id);
+	}
+
+	@Override
+	public int delete(Integer id) {
+		return paperMapper.deleteByPrimaryKey(id) ;
 	}
 
 }

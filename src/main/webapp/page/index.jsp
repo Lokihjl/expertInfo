@@ -72,20 +72,108 @@
             <li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe726;</i>
-                    <cite>专家与用户的信息维护</cite>
+                    <cite>专家经历信息</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
                         <a _href="${ctx }/expericence/list?pageNum=1&pageSize=6">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>专家与用户的信息列表</cite>
+                            <cite>专家经历信息列表</cite>
                         </a>
                     </li >
                     <li>
                         <a _href="${ctx }/expericence/add">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>添加专家与用户的信息</cite>
+                            <cite>添加专家经历信息</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+            
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe726;</i>
+                    <cite>专家信息</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="${ctx }/expert/list?pageNum=1&pageSize=6">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>专家信息列表</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="${ctx }/expert/add">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>添加专家信息</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+            
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe726;</i>
+                    <cite>论文发表及专著出版情况</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="${ctx }/paper/list?pageNum=1&pageSize=6">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>列表</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="${ctx }/paper/add">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>添加信息</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+            
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe726;</i>
+                    <cite>专利获取情况</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="${ctx }/patent/list?pageNum=1&pageSize=6">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>列表</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="${ctx }/patent/add">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>添加信息</cite>
+                        </a>
+                    </li >
+                </ul>
+            </li>
+            
+             <li>
+                <a href="javascript:;">
+                    <i class="iconfont">&#xe726;</i>
+                    <cite>专家科研项目成果获奖</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a _href="${ctx }/reward/list?pageNum=1&pageSize=6">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>列表</cite>
+                        </a>
+                    </li >
+                    <li>
+                        <a _href="${ctx }/reward/add">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>添加信息</cite>
                         </a>
                     </li >
                 </ul>

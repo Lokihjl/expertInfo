@@ -1,16 +1,13 @@
 package cn.edi.expertInfo.service.impl;
 
-import java.util.Map;
-
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
-import cn.edi.expertInfo.dao.dao.ExperienceMapper;
-import cn.edi.expertInfo.dao.dao.PaperMapper;
-import cn.edi.expertInfo.dao.dao.PatentMapper;
+import cn.edi.expertInfo.dao.dao.ExpertMapper;
 import cn.edi.expertInfo.domain.Expert;
 import cn.edi.expertInfo.service.ExpertService;
 
@@ -18,48 +15,31 @@ import cn.edi.expertInfo.service.ExpertService;
 public class ExpertServiceImpl implements ExpertService {
 
 	@Resource
-	PatentMapper jobMapper;
-
-	@Resource
-	ExperienceMapper experienceMapper;
-
-	@Resource
-	PaperMapper employeeMapper;
+	ExpertMapper expertMapper;
 
 	@Override
-	public Map<String, Object> getInfo() {
-		// TODO Auto-generated method stub
-		return null;
+	public PageInfo getExpert(String content, int pageNum, int pageSize) {
+		return PageHelper.startPage(pageNum, pageSize, true).doSelectPageInfo(() -> expertMapper.get_LikeList(content));
 	}
 
 	@Override
-	public PageInfo getEmployee(int pageNum, int pageSize) {
-		// TODO Auto-generated method stub
-		return null;
+	public void insert(Expert expert) {
+		expertMapper.insert(expert);
 	}
 
 	@Override
-	public void insert(Expert employee) {
-		// TODO Auto-generated method stub
-
+	public void update(Expert expert) {
+		expertMapper.update_Info(expert);
 	}
 
 	@Override
-	public void update(Expert employee) {
-		// TODO Auto-generated method stub
-
+	public Expert getExpert(Integer id) {
+		return expertMapper.get_Info(id);
 	}
 
 	@Override
-	public PageInfo getEmployee(String content, int pageNum, int pageSize) {
-		// TODO Auto-generated method stub
-		return null;
+	public int delete(Integer id) {
+		return expertMapper.deleteByPrimaryKey(id);
 	}
-
-	@Override
-	public Expert getEmployee(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 }

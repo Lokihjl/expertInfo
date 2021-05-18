@@ -25,13 +25,13 @@ public interface PatentMapper extends Mapper<Patent> {
 
 
   @SelectProvider(type = PatentDynaSqlProvider.class, method = "insert")
-  void insert_Info(Patent job);
+  void insert_Info(Patent patent);
 
   @Select("select * from " + Constants.PATENTABLE + " where id = #{id}")
   Patent get_Info(Integer id);
 
   @SelectProvider(type = PatentDynaSqlProvider.class, method = "update")
-  void update_Info(Patent job);
+  void update_Info(Patent patent);
 
   // 根据id删除部门
   @Delete(" delete from " + Constants.PATENTABLE + " where id = #{id} ")

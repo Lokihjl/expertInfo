@@ -21,10 +21,6 @@ import org.springframework.web.servlet.ModelAndView;
 public class NoticeController {
 
   @Autowired
-  @Qualifier("RainService")
-  private PatentService rainservice;
-
-  @Autowired
   private NoticeService noticeService;
 
 
@@ -54,7 +50,7 @@ public class NoticeController {
   @RequestMapping(value = "/notice/add", method = RequestMethod.GET)
   public String add(Model model, Integer id) {
     if (id != null) {
-      Notice job = rainservice.get_NoticeInfo(id);
+      Notice job = noticeService.get_NoticeInfo(id);
       model.addAttribute("job", job);
     }
     return "/notice/add";
@@ -63,7 +59,7 @@ public class NoticeController {
   @RequestMapping(value = "/notice/add", method = RequestMethod.POST)
   public ModelAndView add(ModelAndView mv, @ModelAttribute Notice notice, Integer id,Integer userid) {
     if (id != null) {
-      rainservice.update_NoticeInfo(notice);
+    	noticeService.update_NoticeInfo(notice);
     } else {
       notice.setUserId(userid);
       noticeService.insertNotice(notice);
@@ -76,7 +72,7 @@ public class NoticeController {
   public void delete(Integer id) {
     System.out.println(id);
     if (id != null) {
-      rainservice.delete_NoticeInfo(id);
+    	noticeService.delete_NoticeInfo(id);
     }
   }
 }

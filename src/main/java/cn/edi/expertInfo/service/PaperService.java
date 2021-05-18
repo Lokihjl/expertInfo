@@ -6,10 +6,14 @@ import cn.edi.expertInfo.domain.Paper;
 
 public interface PaperService {
 
-  void insert(Paper job);
+  void insert(Paper paper);
 
-  void update(Paper job);
+  void update(Paper paper);
 
   PageInfo findAll(String content, int pageNum, int pageSize);
+  
+  Paper getPager(Integer id);
+  
+  int delete(Integer id);
 
 }

@@ -29,9 +29,9 @@ public interface ExpertMapper extends Mapper<Expert> {
 	Expert get_Info(Integer id);
 
 	@SelectProvider(type = ExpertDynaSqlProvider.class, method = "update")
-	void update_Info(Expert dept);
+	void update_Info(Expert expert);
 
-	// 根据id删除部门
+	// 根据id
 	@Delete(" delete from " + Constants.EXPERTTABLE + " where id = #{id} ")
 	void delete_Info(Integer id);
 

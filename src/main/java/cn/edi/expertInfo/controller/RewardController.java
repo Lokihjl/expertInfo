@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageInfo;
 
 import cn.edi.expertInfo.domain.Reward;
-import cn.edi.expertInfo.domain.response.RewardResDTO;
 import cn.edi.expertInfo.service.ExpertService;
 import cn.edi.expertInfo.service.RewardService;
 
@@ -34,23 +33,22 @@ public class RewardController {
 
   }
 
-//  @RequestMapping("/toadd")
-//  public String add(Model model) {
-//    Map<String, Object> info = employeeService.getInfo();
-//    model.addAttribute("dept_list", (List<Dept>) info.get("depts"));
-//    return "reward/add";
-//  }
+  @RequestMapping("/toadd")
+  public String add(Model model) {
+  
+    return "reward/add";
+  }
 
   @PostMapping("/add")
   public ModelAndView add(@ModelAttribute Reward reward, ModelAndView mv,Integer id) {
-	  rewardService.insertOne(reward);
+	  rewardService.insert(reward);
     mv.setViewName("redirect:/reward/list?pageNum=1&pageSize=6");
     return mv;
   }
 
   @RequestMapping("/toupdate")
   public String toUpdate(Model model,Integer id) {
-    RewardResDTO reward = rewardService.getReward(id);
+    Reward reward = rewardService.getReward(id);
     model.addAttribute("reward",reward);
     return "reward/update";
   }

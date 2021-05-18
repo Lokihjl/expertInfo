@@ -14,13 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
-import cn.edi.expertInfo.dao.dao.ExperienceMapper;
-import cn.edi.expertInfo.dao.dao.ExpertMapper;
 import cn.edi.expertInfo.dao.dao.NoticeMapper;
-import cn.edi.expertInfo.dao.dao.PaperMapper;
 import cn.edi.expertInfo.dao.dao.PatentMapper;
 import cn.edi.expertInfo.dao.dao.UserMapper;
-import cn.edi.expertInfo.domain.Notice;
 import cn.edi.expertInfo.domain.Patent;
 import cn.edi.expertInfo.domain.User;
 import cn.edi.expertInfo.service.PatentService;
@@ -31,78 +27,11 @@ import cn.edi.expertInfo.util.MD5Util;
 public class PatentServiceImpl implements PatentService {
 
 	@Resource
-	ExperienceMapper deptMapper;
-	@Resource
-	ExpertMapper documentMapper;
-	@Resource
-	PaperMapper employeeMapper;
-	@Resource
-	PatentMapper jobMapper;
+	PatentMapper patentMapper;
 	@Resource
 	NoticeMapper noticeMapper;
 	@Resource
 	UserMapper userMapper;
-
-	@Override
-	public void delete_Info(Integer id) {
-
-		deptMapper.delete_Info(id);
-	}
-
-	@Override
-	public void delete_EmployeeInfo(Integer id) {
-		employeeMapper.delete_Info(id);
-	}
-
-	/**
-	 * 公告管理
-	 */
-	@Override
-	public List<Notice> get_NoticeList() {
-
-		return noticeMapper.get_List();
-	}
-
-	@Override
-	public List<Notice> get_NoticeLikeList(String content) {
-
-		return noticeMapper.get_LikeList(content);
-	}
-
-	@Override
-	public Notice get_NoticeInfo(Integer id) {
-
-		return noticeMapper.get_Info(id);
-	}
-
-	@Override
-	public void update_NoticeInfo(Notice notice) {
-
-		noticeMapper.update_Info(notice);
-	}
-
-	@Override
-	public void insert_NoticeInfo(Notice notice) {
-
-		// Date date = new Date();
-		// String year = String.format("%tY", date);
-		// String month = String.format("%tB", date);
-		// String day = String.format("%te", date);
-		// notice.setCreate_date(year+month+day);
-		noticeMapper.insert_Info(notice);
-	}
-
-	@Override
-	public void delete_NoticeInfo(Integer id) {
-
-		noticeMapper.delete_Info(id);
-	}
-
-	@Override
-	public void delete_DocumentInfo(Integer id) {
-
-		documentMapper.delete_Info(id);
-	}
 
 	@Override
 	public User login(String loginname, String password) {
@@ -161,92 +90,28 @@ public class PatentServiceImpl implements PatentService {
 	}
 
 	@Override
-	public PageInfo findAllDept(String content, int pageNum, int pageSize) {
-		// TODO Auto-generated method stub
-		return null;
+	public void insert(Patent patent) {
+		patentMapper.insert(patent) ;
 	}
 
 	@Override
-	public void addDept(Patent dept) {
-		// TODO Auto-generated method stub
-
+	public void update(Patent patent) {
+		patentMapper.update_Info(patent);
 	}
 
 	@Override
-	public Patent get_Info(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public PageInfo findAll(String content, int pageNum, int pageSize) {
+		return PageHelper.startPage(pageNum, pageSize, true).doSelectPageInfo(() -> patentMapper.get_LikeList(content));
 	}
 
 	@Override
-	public void update_Info(Patent dept) {
-		// TODO Auto-generated method stub
-
+	public Patent getPatent(Integer id) {
+		return patentMapper.get_Info(id);
 	}
 
 	@Override
-	public PageInfo findAllDept(int pageNum, int pageSize) {
-		// TODO Auto-generated method stub
-		return null;
+	public int delete(Integer id) {
+		return patentMapper.deleteByPrimaryKey(id);
 	}
 
-	@Override
-	public List<Patent> get_EmployeeList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Patent> get_EmployeeLikeList(String content) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Patent get_EmployeeInfo(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void update_EmployeeInfo(Patent data) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void insert_EmployeeInfo(Patent data) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public List<Patent> get_DocumentList() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Patent> get_DocumentLikeList(String content) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Patent get_DocumentInfo(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void update_DocumentInfo(Patent notice) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void insert_DocumentInfo(Patent notice) {
-		// TODO Auto-generated method stub
-
-	}
 }

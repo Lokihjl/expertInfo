@@ -9,7 +9,6 @@ import com.github.pagehelper.PageInfo;
 
 import cn.edi.expertInfo.dao.dao.RewardMapper;
 import cn.edi.expertInfo.domain.Reward;
-import cn.edi.expertInfo.domain.response.RewardResDTO;
 import cn.edi.expertInfo.service.RewardService;
 
 @Service
@@ -19,7 +18,7 @@ public class RewardServiceImpl implements RewardService {
 	RewardMapper rewardMapper;
 
 	@Override
-	public void insertOne(Reward reward) {
+	public void insert(Reward reward) {
 		rewardMapper.insert(reward);
 	}
 
@@ -34,7 +33,12 @@ public class RewardServiceImpl implements RewardService {
 	}
 
 	@Override
-	public RewardResDTO getReward(int id) {
-		return rewardMapper.getRewardById(id);
+	public Reward getReward(int id) {
+		return rewardMapper.selectByPrimaryKey(id) ;
+	}
+
+	@Override
+	public void update(Reward reward) {
+		rewardMapper.updateByPrimaryKey(reward);
 	}
 }

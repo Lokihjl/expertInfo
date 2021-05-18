@@ -7,11 +7,13 @@ import cn.edi.expertInfo.domain.response.RewardResDTO;
 
 public interface RewardService {
 
-  void insertOne(Reward reward);
+  void insert(Reward reward);
+  
+  void update(Reward reward);
 
   PageInfo getReward(int pageNum,int pageSize,String content);
 
   void delete(Integer id);
 
-  RewardResDTO getReward(int id);
+  Reward getReward(int id);
 }

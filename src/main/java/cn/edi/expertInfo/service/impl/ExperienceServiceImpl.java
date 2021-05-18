@@ -28,4 +28,14 @@ public class ExperienceServiceImpl implements ExperienceService {
 
 	}
 
+	@Override
+	public int update(Experience experience) {
+		return experienceMapper.updateByPrimaryKey(experience);
+	}
+
+	@Override
+	public int delete(Integer id) {
+		return experienceMapper.deleteByPrimaryKey(id);
+	}
+
 }
