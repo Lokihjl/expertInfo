@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2021-05-18 08:43:25
+Date: 2021-05-19 15:45:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -24,11 +24,12 @@ CREATE TABLE `category` (
   `name` varchar(50) DEFAULT NULL COMMENT '类别名称',
   `remark` varchar(100) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='专家类别';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='专家类别';
 
 -- ----------------------------
 -- Records of category
 -- ----------------------------
+INSERT INTO `category` VALUES ('1', '机构', '好jigou');
 
 -- ----------------------------
 -- Table structure for experience
@@ -37,8 +38,8 @@ DROP TABLE IF EXISTS `experience`;
 CREATE TABLE `experience` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '唯一id',
   `expert_id` bigint(20) DEFAULT NULL COMMENT '专家关联id',
-  `start_date` datetime DEFAULT NULL COMMENT '开始年月',
-  `end_date` datetime DEFAULT NULL COMMENT '结束年月',
+  `start_date` varchar(20) DEFAULT NULL COMMENT '开始年月',
+  `end_date` varchar(20) DEFAULT NULL COMMENT '结束年月',
   `work` varchar(10) DEFAULT NULL COMMENT '学习或工作单位',
   `education` varchar(10) DEFAULT NULL COMMENT '学历',
   `degree` varchar(10) DEFAULT NULL COMMENT '学位',
@@ -58,11 +59,12 @@ CREATE TABLE `experience` (
 DROP TABLE IF EXISTS `expert`;
 CREATE TABLE `expert` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) DEFAULT NULL COMMENT '用户id',
   `name` varchar(20) DEFAULT NULL COMMENT '姓名',
   `sex` varchar(2) DEFAULT NULL COMMENT '0、男； 1、女',
   `category_id` int(11) DEFAULT NULL COMMENT '类别id',
   `category_name` varchar(50) DEFAULT NULL COMMENT '类别名称',
-  `birthday` datetime DEFAULT NULL COMMENT '出生日期',
+  `birthday` varchar(20) DEFAULT NULL COMMENT '出生日期',
   `card_number` varchar(18) DEFAULT NULL COMMENT '身份证号',
   `work_code` varchar(8) DEFAULT NULL COMMENT '所在单位代码',
   `professional_discipline` varchar(20) DEFAULT NULL COMMENT '专业学科',
@@ -75,11 +77,12 @@ CREATE TABLE `expert` (
   `political` varchar(10) DEFAULT NULL COMMENT '政治面貌',
   `remark` varchar(800) DEFAULT NULL COMMENT '备注个人说明',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='专家用户信息';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COMMENT='专家用户信息';
 
 -- ----------------------------
 -- Records of expert
 -- ----------------------------
+INSERT INTO `expert` VALUES ('1', '9', '11', '11', '1', null, '20210519 15:15:00', '11', '11', '11', '11', '11', '11', '11', '11', '11', '11', '11');
 
 -- ----------------------------
 -- Table structure for notice
@@ -112,7 +115,7 @@ CREATE TABLE `paper` (
   `volume` varchar(50) DEFAULT NULL COMMENT '卷',
   `start_page` varchar(50) DEFAULT NULL COMMENT '起始页码',
   `end_page` varchar(50) DEFAULT NULL COMMENT '止页',
-  `write_time` datetime DEFAULT NULL COMMENT '著作时间',
+  `write_time` varchar(20) DEFAULT NULL COMMENT '著作时间',
   `adress` varchar(50) DEFAULT NULL COMMENT '社地址',
   `total` varchar(50) DEFAULT NULL COMMENT '总共页数',
   `ranking` varchar(10) DEFAULT NULL COMMENT '排名',
@@ -135,7 +138,7 @@ CREATE TABLE `patent` (
   `name` varchar(20) DEFAULT NULL COMMENT '专利项目名称',
   `country` varchar(10) DEFAULT NULL COMMENT '国别',
   `grant` varchar(2) DEFAULT NULL COMMENT '是否授权（是、否）',
-  `year` datetime DEFAULT NULL COMMENT '年度',
+  `year` varchar(20) DEFAULT NULL COMMENT '年度',
   `remark` varchar(50) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='专利获取情况';
@@ -155,7 +158,7 @@ CREATE TABLE `reward` (
   `program` varchar(20) DEFAULT NULL COMMENT '奖励项目',
   `grade` varchar(3) DEFAULT NULL COMMENT '奖励等级',
   `ranking` varchar(10) DEFAULT NULL COMMENT '排名',
-  `year` datetime DEFAULT NULL COMMENT '年度',
+  `year` varchar(20) DEFAULT NULL COMMENT '年度',
   `remark` varchar(50) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='专家科研项目成果获奖';
@@ -177,10 +180,11 @@ CREATE TABLE `user` (
   `createdate` char(50) DEFAULT NULL COMMENT '创建时间',
   `username` varchar(20) DEFAULT NULL COMMENT '用户显示名称',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('9', null, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '0', '19-05-17 02:04:50', '管理员');
 INSERT INTO `user` VALUES ('10', null, 'huangjie', 'e10adc3949ba59abbe56e057f20f883e', '1', '19-05-17 02:13:13', '黄杰');
+INSERT INTO `user` VALUES ('11', null, '111', '698d51a19d8a121ce581499d7b701668', '1', '21-05-19 01:35:08', '111');
