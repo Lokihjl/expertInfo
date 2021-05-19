@@ -6,7 +6,7 @@
   
   <head>
     <meta charset="UTF-8">
-    <title>添加员工</title>
+    <title>添加专家用户信息</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -25,15 +25,15 @@
   
   <body>
     <div class="x-body">
-        <form class="layui-form" method="POST" id="deptForm"  action="${ctx}/employee/add">
-        <input type="hidden" name="id" id="id" value="${job.id }" >
+        <form class="layui-form" method="POST" id="expertForm"  action="${ctx}/employee/add">
+        <input type="hidden" name="id" id="id" value="${expert.id }" >
           <div class="layui-form-item" >
               <label for="username" class="layui-form-label">
                   <span class="x-red">*</span>姓名
               </label>
               <div class="layui-input-inline">
                   <input type="text" id="name" name="name" required="" lay-verify="required"
-                  autocomplete="off" class="layui-input" value="${job.name }">
+                  autocomplete="off" class="layui-input" value="${expert.name }">
               </div>
              
           </div>
@@ -43,7 +43,7 @@
               </label>
               <div class="layui-input-inline">
                   <input type="text" id="cardId" name="cardId" required="" lay-verify="required"
-                  autocomplete="off" class="layui-input" value="${job.cardId }">
+                  autocomplete="off" class="layui-input" value="${expert.cardId }">
               </div>
           </div>
            <div class="layui-form-item">
@@ -52,7 +52,7 @@
               </label>
               <div class="layui-input-inline">
                   <input type="text" id="sex" name="sex" required="" lay-verify="required"
-                  autocomplete="off" class="layui-input" value="${job.sex }">
+                  autocomplete="off" class="layui-input" value="${expert.sex }">
               </div>
           </div>
            <div class="layui-form-item">
@@ -61,7 +61,7 @@
               </label>
               <div class="layui-input-inline">
                   <input type="text" id="education" name="education" required="" lay-verify="required"
-                  autocomplete="off" class="layui-input" value="${job.education }">
+                  autocomplete="off" class="layui-input" value="${expert.education }">
               </div>
           </div>
            <div class="layui-form-item">
@@ -70,7 +70,7 @@
               </label>
               <div class="layui-input-inline">
                   <input type="text" id="email" name="email" required="" lay-verify="required"
-                  autocomplete="off" class="layui-input" value="${job.email }">
+                  autocomplete="off" class="layui-input" value="${expert.email }">
               </div>
           </div>
            <div class="layui-form-item">
@@ -79,7 +79,7 @@
               </label>
               <div class="layui-input-inline">
                   <input type="text" id="phone" name="phone" required="" lay-verify="required"
-                  autocomplete="off" class="layui-input" value="${job.phone }">
+                  autocomplete="off" class="layui-input" value="${expert.phone }">
               </div>
           </div>
           <div class="layui-form-item">
@@ -88,7 +88,7 @@
               </label>
               <div class="layui-input-inline">
                   <input type="text" id="address" name="address" required="" lay-verify="required"
-                  autocomplete="off" class="layui-input" value="${job.address }">
+                  autocomplete="off" class="layui-input" value="${expert.address }">
               </div>
           </div>
   			<div class="layui-form-item">
@@ -96,9 +96,9 @@
                   <span class="x-red">*</span>职位
               </label>
               <div class="layui-input-inline">
-                  <select id="job_id" name="jobId" class="valid" >
-                    <c:forEach items="${requestScope.job_list}" var="line" varStatus="stat">
-                    <option value="${line.id}" <c:if test="${job.jobId == line.id }">selected</c:if>>${line.name}</option>
+                  <select id="expert_id" name="expertId" class="valid" >
+                    <c:forEach items="${requestScope.expert_list}" var="line" varStatus="stat">
+                    <option value="${line.id}" <c:if test="${expert.expertId == line.id }">selected</c:if>>${line.name}</option>
                     </c:forEach>
                   </select>
               </div>
@@ -108,9 +108,9 @@
                   <span class="x-red">*</span>部门
               </label>
               <div class="layui-input-inline">
-                  <select id="dept_id" name="deptId" class="valid">
-                    <c:forEach items="${requestScope.dept_list}" var="line" varStatus="stat">
-                    <option value="${line.id}" <c:if test="${job.deptId == line.id }">selected</c:if>>${line.name}</option>
+                  <select id="expert_id" name="expertId" class="valid">
+                    <c:forEach items="${requestScope.expert_list}" var="line" varStatus="stat">
+                    <option value="${line.id}" <c:if test="${expert.expertId == line.id }">selected</c:if>>${line.name}</option>
                     </c:forEach>
                   </select>
               </div>
@@ -153,7 +153,7 @@
             console.log(id);
             if (id === null || id === '') {
                 layer.alert("增加成功", {icon: 6},function () {
-            	document.getElementById('deptForm').submit();
+            	document.getElementById('expertForm').submit();
                 // 获得frame索引
                 var index = parent.layer.getFrameIndex(window.name);
                 //关闭当前frame
@@ -161,7 +161,7 @@
             });
             } else{
                 layer.alert("修改成功", {icon: 6},function () {
-            	document.getElementById('deptForm').submit();
+            	document.getElementById('expertForm').submit();
                 // 获得frame索引
                 var index = parent.layer.getFrameIndex(window.name);
                 //关闭当前frame

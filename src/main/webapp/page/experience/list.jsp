@@ -6,7 +6,7 @@
   
   <head>
     <meta charset="UTF-8">
-    <title>欢迎页面-X-admin2.0</title>
+    <title>专家专业水平（经历）</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -31,12 +31,12 @@
         <a>
           <cite>导航元素</cite></a>
       </span>
-      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="../dept/list?pageNum=${pageInfo.pageNum}&pageSize=6" title="刷新">
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="../experience/list?pageNum=${pageInfo.pageNum}&pageSize=6" title="刷新">
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
     </div>
     <div class="x-body">
       <div class="layui-row" style="" align="center">
-        <form class="layui-form layui-col-md12 x-so" method="get" action="${ctx }/dept/list">
+        <form class="layui-form layui-col-md12 x-so" method="get" action="${ctx }/experience/list">
           <!-- <input class="layui-input" placeholder="开始日" name="start" id="start">
           <input class="layui-input" placeholder="截止日" name="end" id="end"> -->
           <input type="text" name="content" style="width:50%;"  placeholder="请输入查找内容" autocomplete="off" class="layui-input">
@@ -47,7 +47,7 @@
       </div>
       <%-- <xblock>
  <!--        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button> -->
-        <button class="layui-btn" onclick="x_admin_show('添加用户','${ctx}/dept/add')"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加用户','${ctx}/experience/add')"><i class="layui-icon"></i>添加</button>
         <span class="x-right" style="line-height:40px">共有数据：88 条</span>
       </xblock> --%>
      
@@ -59,23 +59,33 @@
               <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
             </th>
             <th>ID</th>
-            <th>部门名称</th>
-            <th>详细信息</th>
-            <th>人数</th>
-         <!-- <th>状态</th> -->
+            <th>专家关联id</th>
+            <th>开始年月</th>
+            <th>结束年月</th>
+         	<th>学习或工作单位</th>
+            <th>学历</th>
+            <th>学位</th>
+            <th>职位</th>
+            <th>职称</th>
+            <th>备注</th>
             <th>操作</th>
         </thead>
         <tbody>
-        <c:forEach items="${requestScope.list}" var="dept" varStatus="stat">
+        <c:forEach items="${requestScope.list}" var="experience" varStatus="stat">
      <tr>
             <td>
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
-            <td>${dept.id}</td>
-            <td>${dept.name }</td>
-            <td>${dept.remark }</td>
-            <td>${dept.num }</td>
-
+            <td>${experience.id}</td>
+            <td>${experience.expertId }</td>
+            <td>${experience.startDate }</td>
+            <td>${experience.endDate }</td>
+            <td>${experience.work }</td>
+            <td>${experience.education }</td>
+            <td>${experience.degree }</td>
+            <td>${experience.position }</td>
+			<td>${experience.title }</td>
+			<td>${experience.remark }</td>
             
            <!--  <td class="td-status">
               <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td> -->
@@ -84,12 +94,12 @@
                 <i class="layui-icon">&#xe601;</i>
               </a> -->
               <c:if test="${user_session.level=='0'}">
-              <a title="编辑"  onclick="x_admin_show('编辑','${ctx}/dept/add?id=${dept.id }');" href="javascript:;">
+              <a title="编辑"  onclick="x_admin_show('编辑','${ctx}/experience/add?id=${experience.id }');" href="javascript:;">
              
                 <i class="layui-icon">&#xe642;</i>
               </a>
               
-              <a title="删除" onclick="member_del(this,'${dept.id }')" href="javascript:;">
+              <a title="删除" onclick="member_del(this,'${experience.id }')" href="javascript:;">
                 <i class="layui-icon">&#xe640;</i>
               </a>
             </c:if>
@@ -107,11 +117,11 @@
         <div>
           <a class="prev" href="">&lt;&lt;</a>
           <c:if test="${pageInfo.pageNum-1 != 0 }">
-                <a class="num" href="../dept/list?pageNum=${pageInfo.pageNum-1}&pageSize=6">${pageInfo.pageNum - 1}</a>
+                <a class="num" href="../experience/list?pageNum=${pageInfo.pageNum-1}&pageSize=6">${pageInfo.pageNum - 1}</a>
             </c:if>
           <span class="current">${pageInfo.pageNum}</span>
           <c:if test="${pageInfo.pageNum + 1  <= pageInfo.pages }">
-                <a class="num" href="../dept/list?pageNum=${pageInfo.pageNum+1}&pageSize=6">${pageInfo.pageNum + 1}</a>
+                <a class="num" href="../experience/list?pageNum=${pageInfo.pageNum+1}&pageSize=6">${pageInfo.pageNum + 1}</a>
             </c:if>
           <!-- <a class="num" href="">489</a> -->
           <a class="next" href="">&gt;&gt;</a>
@@ -163,7 +173,7 @@
           layer.confirm('确认要删除吗？',function(index){
               //发异步删除数据
               //等以后再使用异步，这里先使用
-              $.get("${ctx}/dept/delete?id="+id);
+              $.get("${ctx}/experience/delete?id="+id);
               $(obj).parents("tr").remove();
               layer.msg('已删除!',{icon:1,time:1000});
           });

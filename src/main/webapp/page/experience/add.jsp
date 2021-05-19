@@ -6,7 +6,7 @@
   
   <head>
     <meta charset="UTF-8">
-    <title>欢迎页面-X-admin2.0</title>
+    <title>专家专业水平（经历）</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -25,25 +25,103 @@
   
   <body>
     <div class="x-body">
-        <form class="layui-form" method="POST" id="deptForm"  action="${ctx}/dept/add">
-        <input type="hidden" name="id" id="id" value="${dept.id }" >
+        <form class="layui-form" method="POST" id="experienceForm"  action="${ctx}/experience/add">
+        <input type="hidden" name="id" id="id" value="${experience.id }" >
           <div class="layui-form-item">
-              <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>部门名称
+              <label for="expertId" class="layui-form-label">
+                  <span class="x-red">*</span>专家关联id
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="name" name="name" required="" lay-verify="required"
-                  autocomplete="off" class="layui-input" value="${dept.name }">
+                  <input type="text" id="expertId" name="expertId" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${experience.expertId }">
               </div>
              
           </div>
+          
+          <div class="layui-form-item">
+              <label for="startDate" class="layui-form-label">
+                  <span class="x-red">*</span>开始年月
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="startDate" name="startDate" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${experience.startDate }">
+              </div>
+             
+          </div>
+          
+          <div class="layui-form-item">
+              <label for="endDate" class="layui-form-label">
+                  <span class="x-red">*</span>结束年月
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="endDate" name="endDate" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${experience.endDate }">
+              </div>
+             
+          </div>
+          
+          <div class="layui-form-item">
+              <label for="work" class="layui-form-label">
+                  <span class="x-red">*</span>学习或工作单位
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="work" name="work" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${experience.work }">
+              </div>
+             
+          </div>
+          
+          <div class="layui-form-item">
+              <label for="education" class="layui-form-label">
+                  <span class="x-red">*</span>学历
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="education" name="education" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${experience.education }">
+              </div>
+             
+          </div>
+          
+          <div class="layui-form-item">
+              <label for="degree" class="layui-form-label">
+                  <span class="x-red">*</span>学位
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="degree" name="degree" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${experience.degree }">
+              </div>
+             
+          </div>
+          
+          <div class="layui-form-item">
+              <label for="position" class="layui-form-label">
+                  <span class="x-red">*</span>职位
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="position" name="position" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${experience.position }">
+              </div>
+             
+          </div>
+          
+          <div class="layui-form-item">
+              <label for="title" class="layui-form-label">
+                  <span class="x-red">*</span>职称
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="title" name="title" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${experience.title }">
+              </div>
+             
+          </div>
+          
           <div class="layui-form-item">
               <label for="phone" class="layui-form-label">
-                  <span class="x-red">*</span>详细信息
+                  <span class="x-red">*</span>备注
               </label>
               <div class="layui-input-inline">
                   <input type="text" id="remark" name="remark" required="" lay-verify="required"
-                  autocomplete="off" class="layui-input" value="${dept.remark }">
+                  autocomplete="off" class="layui-input" value="${experience.remark }">
               </div>
             
           </div>
@@ -84,7 +162,7 @@
             console.log(id);
             if (id === null || id === '') {
                 layer.alert("增加成功", {icon: 6},function () {
-            	document.getElementById('deptForm').submit();
+            	document.getElementById('experienceForm').submit();
                 // 获得frame索引
                 var index = parent.layer.getFrameIndex(window.name);
                 //关闭当前frame
@@ -93,7 +171,7 @@
             });
             } else{
                 layer.alert("修改成功", {icon: 6},function () {
-            	document.getElementById('deptForm').submit();
+            	document.getElementById('experienceForm').submit();
                 // 获得frame索引
                 var index = parent.layer.getFrameIndex(window.name);
                 //关闭当前frame

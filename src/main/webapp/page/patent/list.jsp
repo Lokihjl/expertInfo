@@ -6,7 +6,7 @@
   
   <head>
     <meta charset="UTF-8">
-    <title>文档信息</title>
+    <title>专利获取情况</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -28,16 +28,16 @@
       <span class="layui-breadcrumb">
         <a href="">首页</a>
         <a>
-          <cite>文档信息</cite></a>
+          <cite>专利获取情况</cite></a>
       </span>
             <button class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:innert;margin-left:75%;;"  lay-submit="" lay-filter="sreach"><i class="layui-icon"></i>增加</button>
       
-      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="${ctx }/document/list?pageNum=${pageInfo.pageNum}&pageSize=6" title="刷新">
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="${ctx }/patent/list?pageNum=${pageInfo.pageNum}&pageSize=6" title="刷新">
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
     </div>
     <div class="x-body">
       <div class="layui-row" style="" align="center">
-        <form class="layui-form layui-col-md12 x-so" method="get" action="${ctx }/document/list">
+        <form class="layui-form layui-col-md12 x-so" method="get" action="${ctx }/patent/list">
           <!-- <input class="layui-input" placeholder="开始日" name="start" id="start">
           <input class="layui-input" placeholder="截止日" name="end" id="end"> -->
           <input type="text" name="content" style="width:50%;"  placeholder="请输入查找内容" autocomplete="off" class="layui-input">
@@ -48,7 +48,7 @@
       </div>
       <%-- <xblock>
  <!--        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button> -->
-        <button class="layui-btn" onclick="x_admin_show('添加用户','${ctx}/dept/add')"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加用户','${ctx}/patent/add')"><i class="layui-icon"></i>添加</button>
         <span class="x-right" style="line-height:40px">共有数据：88 条</span>
       </xblock> --%>
      
@@ -60,36 +60,38 @@
               <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
             </th>
             <th>ID</th>
-            <th>标题</th>
-            <th>描述</th>
-            <th>文件名</th>
-            <th>发布日期</th>
-            <th>发布用户</th>
+            <th>专家关联id</th>
+            <th>专利种类</th>
+            <th>专利项目名称</th>
+            <th>国别</th>
+            <th>是否授权</th>
+            <th>年度</th>
+            <th>备注</th>
             <th>操作</th>
         </thead>
         <tbody>
-        <c:forEach items="${requestScope.list}" var="dept" varStatus="stat">
+        <c:forEach items="${requestScope.list}" var="patent" varStatus="stat">
      <tr>
             <td>
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
-            <td>${dept.id}</td>
-            <td>${dept.title }</td>
-            <td>${dept.remark }</td>
-            <td>${dept.filename}</td>
-            <td>${dept.createDate }</td>
-            <td>${dept.user}</td>
-            
+            <td>${patent.id}</td>
+            <td>${patent.expertId }</td>
+            <td>${patent.type }</td>
+            <td>${patent.name}</td>
+            <td>${patent.country }</td>
+            <td>${patent.grant}</td>
+            <td>${patent.year}</td>
+            <td>${patent.remark}</td>
            <!--  <td class="td-status">
               <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td> -->
             <td class="td-manage">
              <!--  <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
                 <i class="layui-icon">&#xe601;</i>
               </a> -->
-              <%-- <a title="编辑"  onclick="x_admin_show('编辑','${ctx}/document/add?id=${dept.id }');" href="javascript:;"> --%>
-              <a title="下载"  href="${ctx}/document/download?path=${dept.path}&filename=${dept.filename}">下载 </a>
-              <c:if test="${userid==dept.userId}">
-              <a title="删除" onclick="member_del(this,'${dept.id }')" href="javascript:;">
+              <%-- <a title="编辑"  onclick="x_admin_show('编辑','${ctx}/patent/add?id=${patent.id }');" href="javascript:;"> --%>
+              
+              <a title="删除" onclick="member_del(this,'${patent.id }')" href="javascript:;">
                 <i class="layui-icon">&#xe640;</i>
               </a>
               </c:if>
@@ -107,11 +109,11 @@
         <div>
           <a class="prev" href="">&lt;&lt;</a>
           <c:if test="${pageInfo.pageNum-1 != 0 }">
-                <a class="num" href="../document/list?pageNum=${pageInfo.pageNum-1}&pageSize=6">${pageInfo.pageNum - 1}</a>
+                <a class="num" href="../patent/list?pageNum=${pageInfo.pageNum-1}&pageSize=6">${pageInfo.pageNum - 1}</a>
             </c:if>
           <span class="current">${pageInfo.pageNum}</span>
           <c:if test="${pageInfo.pageNum + 1  <= pageInfo.pages }">
-                <a class="num" href="../document/list?pageNum=${pageInfo.pageNum+1}&pageSize=6">${pageInfo.pageNum + 1}</a>
+                <a class="num" href="../patent/list?pageNum=${pageInfo.pageNum+1}&pageSize=6">${pageInfo.pageNum + 1}</a>
             </c:if>
           <a class="next" href="">&gt;&gt;</a>
         </div>
@@ -162,7 +164,7 @@
           layer.confirm('确认要删除吗？',function(index){
               //发异步删除数据
               //等以后再使用异步，这里先使用
-              $.get("${ctx}/document/delete?id="+id);
+              $.get("${ctx}/patent/delete?id="+id);
               $(obj).parents("tr").remove();
               layer.msg('已删除!',{icon:1,time:1000});
           });
@@ -182,9 +184,9 @@
       }
     </script>
     <script>var _hmt = _hmt || []; (function() {
-        var hm = document.createElement("script");
+        var hm = patent.createElement("script");
         hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-        var s = document.getElementsByTagName("script")[0];
+        var s = patent.getElementsByTagName("script")[0];
         s.parentNode.insertBefore(hm, s);
       })();</script>
   </body>

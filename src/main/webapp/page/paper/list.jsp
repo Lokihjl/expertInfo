@@ -6,7 +6,7 @@
   
   <head>
     <meta charset="UTF-8">
-    <title>职位信息</title>
+    <title>论文发表及专著出版情况</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
@@ -28,14 +28,14 @@
       <span class="layui-breadcrumb">
         <a href="">首页</a>
         <a>
-          <cite>职位信息</cite></a>
+          <cite>论文发表及专著出版情况</cite></a>
       </span>
-      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="${ctx }/job/list?pageNum=${pageInfo.pageNum}&pageSize=6" title="刷新">
+      <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="${ctx }/paper/list?pageNum=${pageInfo.pageNum}&pageSize=6" title="刷新">
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
     </div>
     <div class="x-body">
       <div class="layui-row" style="" align="center">
-        <form class="layui-form layui-col-md12 x-so" method="get" action="${ctx }/job/list">
+        <form class="layui-form layui-col-md12 x-so" method="get" action="${ctx }/paper/list">
           <!-- <input class="layui-input" placeholder="开始日" name="start" id="start">
           <input class="layui-input" placeholder="截止日" name="end" id="end"> -->
           <input type="text" name="content" style="width:50%;"  placeholder="请输入查找内容" autocomplete="off" class="layui-input">
@@ -46,7 +46,7 @@
       </div>
       <%-- <xblock>
  <!--        <button class="layui-btn layui-btn-danger" onclick="delAll()"><i class="layui-icon"></i>批量删除</button> -->
-        <button class="layui-btn" onclick="x_admin_show('添加用户','${ctx}/dept/add')"><i class="layui-icon"></i>添加</button>
+        <button class="layui-btn" onclick="x_admin_show('添加用户','${ctx}/paper/add')"><i class="layui-icon"></i>添加</button>
         <span class="x-right" style="line-height:40px">共有数据：88 条</span>
       </xblock> --%>
      
@@ -58,32 +58,53 @@
               <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
             </th>
             <th>ID</th>
-            <th>职位</th>
-            <th>信息</th>
-            <th>部门</th>
+            <th>专家关联id</th>
+            <th>论文或著作名称</th>
+            <th>著作类别</th>
+            <th>刊物名称</th>
+            <th>论文时间</th>
+            <th>卷</th>
+            <th>起始页码</th>
+            <th>止页</th>
+            <th>著作时间</th>
+            <th>社地址</th>
+            <th>总共页数</th>
+            <th>排名</th>
+            <th>备注</th>
             <th>操作</th>
         </thead>
         <tbody>
-        <c:forEach items="${requestScope.list}" var="dept" varStatus="stat">
+        <c:forEach items="${requestScope.list}" var="paper" varStatus="stat">
      <tr>
             <td>
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
-            <td>${dept.id}</td>
-            <td>${dept.name}</td>            
-            <td>${dept.remark}</td>
-            <td>${dept.deptName}</td>            
+            <td>${paper.id}</td>
+            <td>${paper.expertId}</td>
+            <td>${paper.name}</td>
+            <td>${paper.type}</td>
+            <td>${paper.publication}</td>
+            <td>${paper.paperTime}</td>
+            <td>${paper.volume}</td>
+            <td>${paper.startPage}</td>
+            <td>${paper.endPage}</td> 
+            <td>${paper.writeTime}</td>
+            <td>${paper.adress}</td>
+            <td>${paper.total}</td>
+            <td>${paper.ranking}</td>           
+            <td>${paper.remark}</td>
+                        
            <!--  <td class="td-status">
               <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td> -->
             <td class="td-manage">
              <!--  <a onclick="member_stop(this,'10001')" href="javascript:;"  title="启用">
                 <i class="layui-icon">&#xe601;</i>
               </a> -->
-              <%-- <a title="编辑"  onclick="x_admin_show('编辑','${ctx}/job/add?id=${dept.id }');" href="javascript:;"> --%>
-              <a title="编辑"  href="${ctx}/job/add?id=${dept.id }">
+              <%-- <a title="编辑"  onclick="x_admin_show('编辑','${ctx}/paper/add?id=${paper.id }');" href="javascript:;"> --%>
+              <a title="编辑"  href="${ctx}/paper/add?id=${paper.id }">
                 <i class="layui-icon">&#xe642;</i>
               </a>
-              <a title="删除" onclick="member_del(this,'${dept.id }')" href="javascript:;">
+              <a title="删除" onclick="member_del(this,'${paper.id }')" href="javascript:;">
                 <i class="layui-icon">&#xe640;</i>
               </a>
             </td>
@@ -100,11 +121,11 @@
         <div>
           <a class="prev" href="">&lt;&lt;</a>
           <c:if test="${pageInfo.pageNum-1 != 0 }">
-                <a class="num" href="../job/list?pageNum=${pageInfo.pageNum-1}&pageSize=6">${pageInfo.pageNum - 1}</a>
+                <a class="num" href="../paper/list?pageNum=${pageInfo.pageNum-1}&pageSize=6">${pageInfo.pageNum - 1}</a>
             </c:if>
           <span class="current">${pageInfo.pageNum}</span>
           <c:if test="${pageInfo.pageNum + 1  <= pageInfo.pages }">
-                <a class="num" href="../job/list?pageNum=${pageInfo.pageNum+1}&pageSize=6">${pageInfo.pageNum + 1}</a>
+                <a class="num" href="../paper/list?pageNum=${pageInfo.pageNum+1}&pageSize=6">${pageInfo.pageNum + 1}</a>
             </c:if>
           <!-- <a class="num" href="">489</a> -->
           <a class="next" href="">&gt;&gt;</a>
@@ -156,7 +177,7 @@
           layer.confirm('确认要删除吗？',function(index){
               //发异步删除数据
               //等以后再使用异步，这里先使用
-              $.get("${ctx}/job/delete?id="+id);
+              $.get("${ctx}/paper/delete?id="+id);
               $(obj).parents("tr").remove();
               layer.msg('已删除!',{icon:1,time:1000});
           });
