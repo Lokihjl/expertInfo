@@ -94,7 +94,7 @@
               <a title="删除" onclick="member_del(this,'${patent.id }')" href="javascript:;">
                 <i class="layui-icon">&#xe640;</i>
               </a>
-              </c:if>
+            
             </td>
           </tr>
 				

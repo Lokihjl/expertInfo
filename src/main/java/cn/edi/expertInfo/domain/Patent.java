@@ -26,7 +26,7 @@ public class Patent {
     
     private String grant ;
 
-    private Date year;
+    private String year;
     
     private String remark ;
 

@@ -14,12 +14,15 @@ public class Expert {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    
+    @Column(name = "user_id")
+    private Integer userId ;
 
     private String name;
 
     private String sex;
     
-    private Date birthday ;
+    private String birthday ;
     
     @Column(name = "category_id")
     private Integer categoryId ;
@@ -33,8 +36,8 @@ public class Expert {
     @Column(name = "work_code")
     private String workCode ;
     
-    @Column(name = "professionalDiscipline")
-    private String professional_discipline ;
+    @Column(name = "professional_discipline")
+    private String professionalDiscipline ;
     
     @Column(name = "final_education")
     private String finalEducation ;

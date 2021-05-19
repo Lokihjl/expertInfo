@@ -12,13 +12,21 @@ import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageInfo;
 
 import cn.edi.expertInfo.domain.Expert;
+import cn.edi.expertInfo.service.CategoryService;
 import cn.edi.expertInfo.service.ExpertService;
+import cn.edi.expertInfo.service.PatentService;
 
 @Controller
 public class ExpertController {
 
 	@Autowired
 	private ExpertService expertService;
+	
+	@Autowired
+	private CategoryService categoryService;
+	
+	@Autowired
+	private   PatentService patentService;
 
 	// 如果在目录下输入为空，则跳转到指定链接
 	@RequestMapping(value = "/expert/")
@@ -37,6 +45,7 @@ public class ExpertController {
 	@RequestMapping(value = "/expert/list", method = RequestMethod.GET)
 	public String index(Model model, String content, int pageNum, int pageSize) {
 		PageInfo pageInfo = expertService.getExpert(content, pageNum, pageSize);
+		System.out.println("111" + pageInfo.getList().size());
 		model.addAttribute("list", pageInfo.getList());
 		model.addAttribute("pageInfo", pageInfo);
 		return "expert/list";
@@ -44,7 +53,10 @@ public class ExpertController {
 
 	@RequestMapping(value = "/expert/add", method = RequestMethod.GET)
 	public String add(Model model, Integer id) {
-		return "/employee/add";
+		
+	    model.addAttribute("category_list", categoryService.list());
+	    model.addAttribute("user_list", patentService.userList());
+		return "/expert/add";
 	}
 
 	@RequestMapping(value = "/expert/add", method = RequestMethod.POST)

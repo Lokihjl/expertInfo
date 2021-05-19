@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.github.pagehelper.PageInfo;
@@ -33,7 +34,7 @@ public class RewardController {
 
   }
 
-  @RequestMapping("/toadd")
+  @RequestMapping(value = "/add", method = RequestMethod.GET)
   public String add(Model model) {
   
     return "reward/add";

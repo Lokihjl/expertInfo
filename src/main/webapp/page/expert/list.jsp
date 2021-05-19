@@ -57,6 +57,7 @@
             <th>
               <div class="layui-unselect header layui-form-checkbox" lay-skin="primary"><i class="layui-icon">&#xe605;</i></div>
             </th>
+            <th>用户ID</th>
             <th>姓名</th>
             <th>性别</th>
            <th>手机号码</th>
@@ -80,6 +81,7 @@
             <td>
               <div class="layui-unselect layui-form-checkbox" lay-skin="primary" data-id='2'><i class="layui-icon">&#xe605;</i></div>
             </td>
+            <td>${expert.userId }</td>
             <td>${expert.name }</td>
             <td>${expert.sex }</td>
             <td>${expert.tel }</td>
@@ -95,8 +97,6 @@
             <td>${expert.nation }</td>
             <td>${expert.political }</td>
             <td>${expert.remark }</td>
-            <!-- <td disabled="true">${expert.jobId}</td> -->
-            <!-- <td disabled="true">${expert.expertId}</td> -->
             
            <!--  <td class="td-status">
               <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td> -->

@@ -6,42 +6,35 @@
   <select id="getReward" resultType="cn.edi.expertInfo.domain.response.RewardResDTO">
 		SELECT
 			r.id,
-			d.name as deptName,
-			d.id as deptId,
-			j.name as jobName,
-			j.id as jobId,
-			r.person_num as personNum,
+			r.expert_id as expertId,
+			r.type as type,
+			r.program as program,
 			r.remark as remark,
-			r.`status`,
-			r.create_date as createDate
+			r.grade as grade,
+			r.ranking as ranking,
+			r.year as year
 		FROM
 			Reward r
-		LEFT JOIN dept d ON r.dept_id = d.id
-		LEFT JOIN job j ON j.id = r.job_id
 		<where>
 			<if test="content !='' and content!=null">
 				<bind name="key" value="'%'+ content +'%'"/>
-				deptName like #{key} or jobName like#{key}
+				program like #{key} or type like#{key}
 			</if>
 		</where>
-		order by r.create_date DESC
   </select>
 
 	<select id="getRewardById" resultType="cn.edi.expertInfo.domain.response.RewardResDTO">
 		SELECT
 			r.id,
-			d.name as deptName,
-			d.id as deptId,
-			j.name as jobName,
-			j.id as jobId,
-			r.person_num as personNum,
+			r.expert_id as expertId,
+			r.type as type,
+			r.program as program,
 			r.remark as remark,
-			r.`status`,
-			r.create_date as createDate
+			r.grade as grade,
+			r.ranking as ranking,
+			r.year as year
 		FROM
 			Reward r
-		LEFT JOIN dept d ON r.dept_id = d.id
-		LEFT JOIN job j ON j.id = r.job_id
 		where r.id = #{id}
 	</select>
 </mapper>

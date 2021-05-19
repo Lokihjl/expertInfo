@@ -114,4 +114,9 @@ public class PatentServiceImpl implements PatentService {
 		return patentMapper.deleteByPrimaryKey(id);
 	}
 
+	@Override
+	public List<User> userList() {
+		return userMapper.selectAll() ;
+	}
+
 }

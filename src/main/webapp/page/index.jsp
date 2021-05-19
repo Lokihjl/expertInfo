@@ -77,13 +77,13 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="${ctx }/expericence/list?pageNum=1&pageSize=6">
+                        <a _href="${ctx }/experience/list?pageNum=1&pageSize=6">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>专家经历信息列表</cite>
                         </a>
                     </li >
                     <li>
-                        <a _href="${ctx }/expericence/add">
+                        <a _href="${ctx }/experience/add">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>添加专家经历信息</cite>
                         </a>
@@ -246,20 +246,20 @@
          	<li>
                 <a href="javascript:;">
                     <i class="iconfont">&#xe6ce;</i>
-                    <cite>专家信息</cite>
+                    <cite>公告管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
                         <a _href="${ctx }/notice/list?pageNum=1&pageSize=6">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>专家信息查询</cite>
+                            <cite>公告查询</cite>
                         </a>
                     </li >
                     <li>
                         <a _href="${ctx }/notice/add">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>修改专家信息</cite>
+                            <cite>添加公告</cite>
                         </a>
                     </li >
                    

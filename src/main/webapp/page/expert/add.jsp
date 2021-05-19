@@ -16,6 +16,9 @@
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="${ctx}/public/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="${ctx}/public/js/xadmin.js"></script>
+    <script type="text/javascript" src="${ctx}/public/My97DatePicker/calendar.js"></script>
+    <script type="text/javascript" src="${ctx}/public/My97DatePicker/WdatePicker.js"></script>
+
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <!--[if lt IE 9]>
       <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
@@ -25,8 +28,22 @@
   
   <body>
     <div class="x-body">
-        <form class="layui-form" method="POST" id="expertForm"  action="${ctx}/employee/add">
+        <form class="layui-form" method="POST" id="expertForm"  action="${ctx}/expert/add">
         <input type="hidden" name="id" id="id" value="${expert.id }" >
+        
+        <div class="layui-form-item">
+              <label for="username" class="layui-form-label">
+                  <span class="x-red">*</span>用户id
+              </label>
+              <div class="layui-input-inline">
+                  <select id="userId" name="userId" class="valid" >
+                    <c:forEach items="${requestScope.user_list}" var="line" varStatus="stat">
+                    <option value="${line.id}" <c:if test="${expert.userId == line.id }">selected</c:if>>${line.username}</option>
+                    </c:forEach>
+                  </select>
+              </div>
+          </div>
+        
           <div class="layui-form-item" >
               <label for="username" class="layui-form-label">
                   <span class="x-red">*</span>姓名
@@ -57,64 +74,138 @@
           </div>
            <div class="layui-form-item">
               <label for="phone" class="layui-form-label">
-                  <span class="x-red">*</span>学历
+                  <span class="x-red">*</span>类别
               </label>
+             
               <div class="layui-input-inline">
-                  <input type="text" id="education" name="education" required="" lay-verify="required"
-                  autocomplete="off" class="layui-input" value="${expert.education }">
+                  <select id="categoryId" name="categoryId" class="valid" >
+                    <c:forEach items="${requestScope.category_list}" var="line" varStatus="stat">
+                    <option value="${line.id}" <c:if test="${expert.userId == line.id }">selected</c:if>>${line.name}</option>
+                    </c:forEach>
+                  </select>
               </div>
           </div>
            <div class="layui-form-item">
               <label for="phone" class="layui-form-label">
-                  <span class="x-red">*</span>邮箱
+                  <span class="x-red">*</span>出生日期
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="email" name="email" required="" lay-verify="required"
-                  autocomplete="off" class="layui-input" value="${expert.email }">
-              </div>
+              	<input class="Wdate" onFocus="WdatePicker({lang:'zh-cn',dateFmt:'yyyyMMdd HH:mm:ss'})"  type="date"  name="birthday" value="${expert.birthday}" />
+			  </div>
+              
           </div>
            <div class="layui-form-item">
               <label for="phone" class="layui-form-label">
-                  <span class="x-red">*</span>手机
+                  <span class="x-red">*</span>身份证号
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="phone" name="phone" required="" lay-verify="required"
-                  autocomplete="off" class="layui-input" value="${expert.phone }">
+                  <input type="text" id="cardNumber" name="cardNumber" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${expert.cardNumber }">
               </div>
           </div>
+          
+          <div class="layui-form-item">
+              <label for="phone" class="layui-form-label">
+                  <span class="x-red">*</span>所在单位代码
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="workCode" name="workCode" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${expert.workCode }">
+              </div>
+          </div>
+          
+          
+          <div class="layui-form-item">
+              <label for="phone" class="layui-form-label">
+                  <span class="x-red">*</span>专业学科
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="professionalDiscipline" name="professionalDiscipline" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${expert.professionalDiscipline }">
+              </div>
+          </div>
+          
+          
+          <div class="layui-form-item">
+              <label for="phone" class="layui-form-label">
+                  <span class="x-red">*</span>最后学历
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="finalEducation" name="finalEducation" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${expert.finalEducation }">
+              </div>
+          </div>
+          
+          
+          <div class="layui-form-item">
+              <label for="phone" class="layui-form-label">
+                  <span class="x-red">*</span>最高学位
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="highestDegree" name="highestDegree" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${expert.highestDegree }">
+              </div>
+          </div>
+          
+                    <div class="layui-form-item">
+              <label for="phone" class="layui-form-label">
+                  <span class="x-red">*</span>通讯地址
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="postalAddress" name="postalAddress" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${expert.postalAddress }">
+              </div>
+          </div>
+          
+                    <div class="layui-form-item">
+              <label for="phone" class="layui-form-label">
+                  <span class="x-red">*</span>邮件编号
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="postalCode" name="postalCode" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${expert.postalCode }">
+              </div>
+          </div>
+          
+                    <div class="layui-form-item">
+              <label for="phone" class="layui-form-label">
+                  <span class="x-red">*</span>手机号
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="tel" name="tel" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${expert.tel }">
+              </div>
+          </div>
+          
+                    <div class="layui-form-item">
+              <label for="phone" class="layui-form-label">
+                  <span class="x-red">*</span>民族
+              </label>
+              <div class="layui-input-inline">
+                  <input type="text" id="nation" name="nation" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${expert.nation }">
+              </div>
+          </div>
+          
           <div class="layui-form-item">
               <label for="phone" class="layui-form-label">
                   <span class="x-red">*</span>联系地址
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="address" name="address" required="" lay-verify="required"
-                  autocomplete="off" class="layui-input" value="${expert.address }">
+                  <input type="text" id="political" name="political" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${expert.political }">
               </div>
           </div>
   			<div class="layui-form-item">
               <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>职位
+                  <span class="x-red">*</span>备注个人说明
               </label>
               <div class="layui-input-inline">
-                  <select id="expert_id" name="expertId" class="valid" >
-                    <c:forEach items="${requestScope.expert_list}" var="line" varStatus="stat">
-                    <option value="${line.id}" <c:if test="${expert.expertId == line.id }">selected</c:if>>${line.name}</option>
-                    </c:forEach>
-                  </select>
+                  <input type="text" id="remark" name="remark" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${expert.remark }">
               </div>
           </div>
-            <div class="layui-form-item">
-              <label for="username" class="layui-form-label">
-                  <span class="x-red">*</span>部门
-              </label>
-              <div class="layui-input-inline">
-                  <select id="expert_id" name="expertId" class="valid">
-                    <c:forEach items="${requestScope.expert_list}" var="line" varStatus="stat">
-                    <option value="${line.id}" <c:if test="${expert.expertId == line.id }">selected</c:if>>${line.name}</option>
-                    </c:forEach>
-                  </select>
-              </div>
-          </div>         
+           
           
 
           <div class="layui-form-item">

@@ -26,7 +26,7 @@ public class Reward {
     
     private String ranking ;
 
-    private Date year;
+    private String year;
     
     private String remark ;
 

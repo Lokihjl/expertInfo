@@ -25,7 +25,7 @@ public class Paper {
     private String publication ;
     
     @Column(name = "paper_time")
-    private Date paperTime;
+    private String paperTime;
     
     private String volume ;
 

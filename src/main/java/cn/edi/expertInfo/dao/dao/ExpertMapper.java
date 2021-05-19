@@ -19,7 +19,7 @@ public interface ExpertMapper extends Mapper<Expert> {
 	@Select("select * from " + Constants.EXPERTTABLE + " order by id ASC")
 	List<Expert> get_List();
 
-	@Select("select * from " + Constants.EXPERTTABLE + " where title like CONCAT('%',#{content},'%') order by id ASC")
+	@Select("select * from " + Constants.EXPERTTABLE + " where name like CONCAT('%',#{content},'%') order by id ASC")
 	List<Expert> get_LikeList(String content);
 
 	@SelectProvider(type = ExpertDynaSqlProvider.class, method = "insert")

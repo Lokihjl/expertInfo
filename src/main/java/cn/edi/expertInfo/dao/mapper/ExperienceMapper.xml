@@ -12,10 +12,9 @@
 
   <select id="getExperiences" resultType="cn.edi.expertInfo.domain.response.ExperienceResDTO">
     SELECT
-      d.*,COUNT(e.id) as num
+      d.*
     FROM
       Experience d
-    LEFT JOIN employee e ON d.id = e.Experience_id
     <where>
       <if test="content!=null and content!=''">
         <bind name="key" value="'%'+ content +'%'"/>

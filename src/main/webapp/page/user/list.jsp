@@ -75,7 +75,13 @@
             <td>${dept.loginname }</td>
             <td>${dept.username }</td>
             <td>${dept.createdate }</td>
-            <td>${dept.level}</td>
+            <c:if test="${dept.level=='0'}">
+            <td>管理员</td>
+            </c:if>
+             <c:if test="${dept.level=='1'}">
+             <td>专家</td>
+            </c:if>
+            
         
            <!--  <td class="td-status">
               <span class="layui-btn layui-btn-normal layui-btn-mini">已启用</span></td> -->

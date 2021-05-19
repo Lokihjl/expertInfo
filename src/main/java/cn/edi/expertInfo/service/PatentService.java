@@ -1,5 +1,6 @@
 package cn.edi.expertInfo.service;
 
+import java.util.List;
 import java.util.Map;
 
 import com.github.pagehelper.PageInfo;
@@ -26,6 +27,8 @@ public interface PatentService {
 	Map<String, Object> get_UserList(int pageNum, int pageSize);
 
 	Map<String, Object> get_UserLikeList(String content, int pageNum, int pageSize);
+	
+	List<User> userList() ;
 
 	User get_UserInfo(Integer id);
 

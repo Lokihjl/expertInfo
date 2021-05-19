@@ -19,7 +19,14 @@ public class ExpertServiceImpl implements ExpertService {
 
 	@Override
 	public PageInfo getExpert(String content, int pageNum, int pageSize) {
-		return PageHelper.startPage(pageNum, pageSize, true).doSelectPageInfo(() -> expertMapper.get_LikeList(content));
+		PageInfo pageInfo = null;
+		if (content == null) {
+			pageInfo = PageHelper.startPage(pageNum, pageSize, true).doSelectPageInfo(() -> expertMapper.get_List());
+		} else {
+			pageInfo = PageHelper.startPage(pageNum, pageSize, true)
+					.doSelectPageInfo(() -> expertMapper.get_LikeList(content));
+		}
+		return pageInfo;
 	}
 
 	@Override

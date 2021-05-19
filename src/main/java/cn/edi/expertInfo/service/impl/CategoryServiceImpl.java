@@ -1,5 +1,7 @@
 package cn.edi.expertInfo.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -42,6 +44,11 @@ public class CategoryServiceImpl implements CategoryService {
 	public int del(Integer id) {
 		return categoryMapper.deleteByPrimaryKey(id) ;
 		
+	}
+
+	@Override
+	public List<Category> list() {
+		return categoryMapper.selectAll() ;
 	}
 
 }
