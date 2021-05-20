@@ -32,8 +32,11 @@
                   <span class="x-red">*</span>专家关联id
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="expertId" name="expertId" required="" lay-verify="required"
-                  autocomplete="off" class="layui-input" value="${experience.expertId }">
+                  <select id="expertId" name="expertId" class="valid" >
+                    <c:forEach items="${requestScope.expert_list}" var="line" varStatus="stat">
+                    <option value="${line.id}" <c:if test="${expert.expertId == line.id }">selected</c:if>>${line.name}</option>
+                    </c:forEach>
+                  </select>
               </div>
              
           </div>

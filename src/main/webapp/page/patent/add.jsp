@@ -34,8 +34,11 @@
                   <span class="x-red">*</span>专家关联id
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="expertId" name="expertId" required="" lay-verify="required"
-                  autocomplete="off" class="layui-input" value="${patent.expertId }">
+                  <select id="expertId" name="expertId" class="valid" >
+                    <c:forEach items="${requestScope.expert_list}" var="line" varStatus="stat">
+                    <option value="${line.id}" <c:if test="${expert.expertId == line.id }">selected</c:if>>${line.name}</option>
+                    </c:forEach>
+                  </select>
               </div>
              
           </div>
@@ -107,18 +110,7 @@
               </div>
             
           </div>
-          <div class="layui-form-item">
-            <label for="phone" class="layui-form-label">
-                <span class="x-red">*</span>选择部门
-            </label>
-            <div class="layui-input-inline">
-                <select id="patent_id" name="patentId" class="valid">
-                  <c:forEach items="${requestScope.patent_list}" var="line" varStatus="stat">
-                  <option value="${line.id}" <c:if test="${patent.patent_id == line.id }">selected</c:if>>${line.name}</option>
-                  </c:forEach>
-                </select>
-            </div>         
-        </div>
+
 
           <div class="layui-form-item">
               <label for="L_repass" class="layui-form-label">

@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageInfo;
 
 import cn.edi.expertInfo.domain.Paper;
+import cn.edi.expertInfo.service.ExpertService;
 import cn.edi.expertInfo.service.PaperService;
 
 @Controller
@@ -19,6 +20,9 @@ public class PaperController {
 
 	@Autowired
 	private PaperService paperService;
+	
+	@Autowired
+	private ExpertService expertService ;
 
 	// 如果在目录下输入为空，则跳转到指定链接
 	@RequestMapping(value = "/paper/")
@@ -47,7 +51,7 @@ public class PaperController {
 
 	@RequestMapping(value = "/paper/add", method = RequestMethod.GET)
 	public String add(Model model, Integer id) {
-
+		model.addAttribute("expert_list", expertService.allList());
 		return "/paper/add";
 	}
 

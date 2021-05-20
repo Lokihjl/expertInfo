@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.github.pagehelper.PageInfo;
 
 import cn.edi.expertInfo.domain.Patent;
+import cn.edi.expertInfo.service.ExpertService;
 import cn.edi.expertInfo.service.PatentService;
 
 @Controller
@@ -19,6 +20,9 @@ public class PatentController {
 
 	@Autowired
 	PatentService patentService;
+	
+	@Autowired
+	private ExpertService expertService ;
 
 	// 如果在目录下输入为空，则跳转到指定链接
 	@RequestMapping(value = "/patent/")
@@ -44,7 +48,7 @@ public class PatentController {
 
 	@RequestMapping(value = "/patent/add", method = RequestMethod.GET)
 	public String add(Model model, Integer id) {
-
+		model.addAttribute("expert_list", expertService.allList());
 		return "/patent/add";
 	}
 

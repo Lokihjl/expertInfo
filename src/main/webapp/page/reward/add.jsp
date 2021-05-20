@@ -37,6 +37,14 @@
                   <input type="text" id="expertId" name="expertId" required="" lay-verify="required"
                   autocomplete="off" class="layui-input" value="${paper.expertId }">
               </div>
+              
+              <div class="layui-input-inline">
+                  <select id="expertId" name="expertId" class="valid" >
+                    <c:forEach items="${requestScope.expert_list}" var="line" varStatus="stat">
+                    <option value="${line.id}" <c:if test="${expert.expertId == line.id }">selected</c:if>>${line.name}</option>
+                    </c:forEach>
+                  </select>
+              </div>
              
           </div>
           

@@ -1,5 +1,7 @@
 package cn.edi.expertInfo.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -47,6 +49,11 @@ public class ExpertServiceImpl implements ExpertService {
 	@Override
 	public int delete(Integer id) {
 		return expertMapper.deleteByPrimaryKey(id);
+	}
+
+	@Override
+	public List<Expert> allList() {
+		return expertMapper.selectAll() ;
 	}
 	
 }
