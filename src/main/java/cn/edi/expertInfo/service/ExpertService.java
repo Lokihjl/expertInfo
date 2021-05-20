@@ -10,6 +10,8 @@ public interface ExpertService {
 
 	PageInfo getExpert(String content, int pageNum, int pageSize);
 	
+	Expert getExpertByUserId(Integer id) ;
+	
 	List<Expert> allList() ;
 
 	void insert(Expert expert);

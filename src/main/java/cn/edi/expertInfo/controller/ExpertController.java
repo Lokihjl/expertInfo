@@ -1,5 +1,8 @@
 package cn.edi.expertInfo.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,14 +49,29 @@ public class ExpertController {
 	@RequestMapping(value = "/expert/list", method = RequestMethod.GET)
 	public String index(Model model, String content, int pageNum, int pageSize) {
 		PageInfo pageInfo = expertService.getExpert(content, pageNum, pageSize);
-		System.out.println("111" + pageInfo.getList());
 		model.addAttribute("list", pageInfo.getList());
+		model.addAttribute("pageInfo", pageInfo);
+		return "expert/list";
+	}
+	
+	@RequestMapping(value = "/expert/list2", method = RequestMethod.GET)
+	public String index2(Model model, Integer userId) {
+		System.out.println("userId="+userId);
+		PageInfo pageInfo = new PageInfo() ;
+		pageInfo.setPageNum(1);
+		pageInfo.setPageSize(10);
+		pageInfo.setTotal(1L);
+		Expert expert = expertService.getExpertByUserId(userId) ;
+		List<Expert> data = new ArrayList<Expert>() ;
+		data.add(expert) ;
+		model.addAttribute("list", data);
 		model.addAttribute("pageInfo", pageInfo);
 		return "expert/list";
 	}
 
 	@RequestMapping(value = "/expert/add", method = RequestMethod.GET)
 	public String add(Model model, Integer id) {
+		model.addAttribute("expert", expertService.getExpert(id));
 		
 	    model.addAttribute("category_list", categoryService.list());
 	    model.addAttribute("user_list", patentService.userList());

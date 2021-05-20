@@ -256,14 +256,7 @@
                             <cite>公告查询</cite>
                         </a>
                     </li >
-                    <li>
-                        <a _href="${ctx }/notice/add">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>添加公告</cite>
-                        </a>
-                    </li >
-                   
-                   
+
                 </ul>
             </li>
             
@@ -275,7 +268,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="${ctx }/notice/list?pageNum=1&pageSize=6">
+                        <a _href="${ctx }/expert/list2?userId="+"${user_session.id}">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>个人信息查询</cite>
                         </a>

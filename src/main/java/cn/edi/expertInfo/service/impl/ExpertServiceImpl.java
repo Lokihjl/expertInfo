@@ -12,6 +12,7 @@ import com.github.pagehelper.PageInfo;
 import cn.edi.expertInfo.dao.dao.ExpertMapper;
 import cn.edi.expertInfo.domain.Expert;
 import cn.edi.expertInfo.service.ExpertService;
+import tk.mybatis.mapper.entity.Example;
 
 @Service
 public class ExpertServiceImpl implements ExpertService {
@@ -54,6 +55,13 @@ public class ExpertServiceImpl implements ExpertService {
 	@Override
 	public List<Expert> allList() {
 		return expertMapper.selectAll() ;
+	}
+
+	@Override
+	public Expert getExpertByUserId(Integer id) {
+		Example expertExample = new Example(Expert.class);
+		expertExample.createCriteria().andEqualTo("userId",id);
+		return expertMapper.selectOneByExample(expertExample) ;
 	}
 	
 }

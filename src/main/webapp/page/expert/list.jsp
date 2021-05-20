@@ -108,9 +108,11 @@
               <a title="编辑"  href="${ctx}/expert/add?id=${expert.id }">
                 <i class="layui-icon">&#xe642;</i>
               </a>
+              <c:if test="${user_session.level=='0'}">
               <a title="删除" onclick="member_del(this,'${expert.id }')" href="javascript:;">
                 <i class="layui-icon">&#xe640;</i>
               </a>
+              </c:if>
             </td>
           </tr>
 				

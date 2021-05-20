@@ -59,8 +59,8 @@
                   <span class="x-red">*</span>身份证号码
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="cardId" name="cardId" required="" lay-verify="required"
-                  autocomplete="off" class="layui-input" value="${expert.cardId }">
+                  <input type="text" id="cardNumber" name="cardNumber" required="" lay-verify="required"
+                  autocomplete="off" class="layui-input" value="${expert.cardNumber }">
               </div>
           </div>
            <div class="layui-form-item">
