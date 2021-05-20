@@ -23,7 +23,7 @@ public class ExpertServiceImpl implements ExpertService {
 	public PageInfo getExpert(String content, int pageNum, int pageSize) {
 		PageInfo pageInfo = null;
 		if (content == null) {
-			pageInfo = PageHelper.startPage(pageNum, pageSize, true).doSelectPageInfo(() -> expertMapper.get_List());
+			pageInfo = PageHelper.startPage(pageNum, pageSize, true).doSelectPageInfo(() -> expertMapper.selectAll());
 		} else {
 			pageInfo = PageHelper.startPage(pageNum, pageSize, true)
 					.doSelectPageInfo(() -> expertMapper.get_LikeList(content));

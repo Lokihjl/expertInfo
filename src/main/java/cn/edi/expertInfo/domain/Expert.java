@@ -1,15 +1,15 @@
 package cn.edi.expertInfo.domain;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.Data;
+import lombok.ToString;
 
 @Data
+@ToString
 public class Expert {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

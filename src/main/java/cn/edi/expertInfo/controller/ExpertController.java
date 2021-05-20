@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.github.pagehelper.PageInfo;
 
+import cn.edi.expertInfo.domain.Category;
 import cn.edi.expertInfo.domain.Expert;
 import cn.edi.expertInfo.service.CategoryService;
 import cn.edi.expertInfo.service.ExpertService;
@@ -45,7 +46,7 @@ public class ExpertController {
 	@RequestMapping(value = "/expert/list", method = RequestMethod.GET)
 	public String index(Model model, String content, int pageNum, int pageSize) {
 		PageInfo pageInfo = expertService.getExpert(content, pageNum, pageSize);
-		System.out.println("111" + pageInfo.getList().size());
+		System.out.println("111" + pageInfo.getList());
 		model.addAttribute("list", pageInfo.getList());
 		model.addAttribute("pageInfo", pageInfo);
 		return "expert/list";
@@ -60,11 +61,18 @@ public class ExpertController {
 	}
 
 	@RequestMapping(value = "/expert/add", method = RequestMethod.POST)
-	public ModelAndView add(ModelAndView mv, @ModelAttribute Expert job, Integer id) {
-		if (job.getId() != null) {
-			expertService.update(job);
+	public ModelAndView add(ModelAndView mv, @ModelAttribute Expert expert, Integer id) {
+		if(null != expert) {
+			Category category = categoryService.getCategory(expert.getCategoryId()) ;
+			if(null != category) {
+				expert.setCategoryName(category.getName());
+			}
+		}
+		
+		if (expert.getId() != null) {
+			expertService.update(expert);
 		} else {
-			expertService.insert(job);
+			expertService.insert(expert);
 		}
 		mv.setViewName("redirect:/expert/list?pageNum=1&pageSize=6");
 		return mv;
