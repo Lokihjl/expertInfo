@@ -79,7 +79,7 @@ public class ExpertController {
 	}
 
 	@RequestMapping(value = "/expert/add", method = RequestMethod.POST)
-	public ModelAndView add(ModelAndView mv, @ModelAttribute Expert expert, Integer id) {
+	public ModelAndView add(ModelAndView mv, @ModelAttribute Expert expert, Integer id, Integer userId) {
 		if(null != expert) {
 			Category category = categoryService.getCategory(expert.getCategoryId()) ;
 			if(null != category) {
@@ -92,7 +92,12 @@ public class ExpertController {
 		} else {
 			expertService.insert(expert);
 		}
-		mv.setViewName("redirect:/expert/list?pageNum=1&pageSize=6");
+		if(null == userId) {
+			mv.setViewName("redirect:/expert/list?pageNum=1&pageSize=6");
+		}else{
+			mv.setViewName("redirect:/expert/list2?userId=" + userId);
+		}
+		
 		return mv;
 	}
 

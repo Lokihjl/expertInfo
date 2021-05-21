@@ -31,6 +31,10 @@
         <form class="layui-form" method="POST" id="expertForm"  action="${ctx}/expert/add">
         <input type="hidden" name="id" id="id" value="${expert.id }" >
         
+        <c:if test="${user_session.level=='1'}">
+        	<input type="hidden" name="userId" id="userId" value="${user_session.id }" >
+        </c:if>
+        
         <div class="layui-form-item">
               <label for="username" class="layui-form-label">
                   <span class="x-red">*</span>用户id

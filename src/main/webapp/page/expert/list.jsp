@@ -30,7 +30,9 @@
         <a>
           <cite>专家用户信息</cite></a>
       </span>
+      <c:if test="${user_session.level=='0'}">
       <a class="layui-btn layui-btn-small" style="line-height:1.6em;margin-top:3px;float:right" href="${ctx }/expert/list?pageNum=${pageInfo.pageNum}&pageSize=6" title="刷新">
+      </c:if>
         <i class="layui-icon" style="line-height:30px">ဂ</i></a>
     </div>
     <div class="x-body">
