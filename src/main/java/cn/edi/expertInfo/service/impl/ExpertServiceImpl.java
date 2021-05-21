@@ -39,12 +39,12 @@ public class ExpertServiceImpl implements ExpertService {
 
 	@Override
 	public void update(Expert expert) {
-		expertMapper.update_Info(expert);
+		expertMapper.updateByPrimaryKey(expert) ;
 	}
 
 	@Override
 	public Expert getExpert(Integer id) {
-		return expertMapper.get_Info(id);
+		return expertMapper.selectByPrimaryKey(id) ;
 	}
 
 	@Override
