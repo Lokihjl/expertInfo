@@ -94,15 +94,6 @@
 			  </div>
               
           </div>
-           <div class="layui-form-item">
-              <label for="phone" class="layui-form-label">
-                  <span class="x-red">*</span>身份证号
-              </label>
-              <div class="layui-input-inline">
-                  <input type="text" id="cardNumber" name="cardNumber" required="" lay-verify="required"
-                  autocomplete="off" class="layui-input" value="${expert.cardNumber }">
-              </div>
-          </div>
           
           <div class="layui-form-item">
               <label for="phone" class="layui-form-label">
