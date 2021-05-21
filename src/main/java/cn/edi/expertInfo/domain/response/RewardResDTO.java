@@ -21,7 +21,7 @@ public class RewardResDTO implements Serializable{
     
     private String ranking ;
 
-    private Date year;
+    private String year;
     
     private String remark ;
 

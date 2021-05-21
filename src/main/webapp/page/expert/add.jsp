@@ -16,8 +16,8 @@
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="${ctx}/public/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="${ctx}/public/js/xadmin.js"></script>
-    <script type="text/javascript" src="${ctx}/public/My97DatePicker/calendar.js"></script>
-    <script type="text/javascript" src="${ctx}/public/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="src/main/webapp/public/My97DatePicker/calendar.js"></script>
+    <script type="text/javascript" src="src/main/webapp/public/My97DatePicker/WdatePicker.js"></script>
 
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <!--[if lt IE 9]>

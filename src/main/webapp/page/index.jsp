@@ -268,7 +268,7 @@
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a _href="${ctx }/expert/list2?userId="+"${user_session.id}">
+                        <a _href="${ctx }/expert/list2?userId="${user_session.id}">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>个人信息查询</cite>
                         </a>

@@ -16,9 +16,9 @@ public class ExperienceResDTO implements Serializable{
     
     private Integer expertId; 
 
-    private Date startDate;
+    private String startDate;
 
-    private Date endDate;
+    private String endDate;
     
     private String work ;
     

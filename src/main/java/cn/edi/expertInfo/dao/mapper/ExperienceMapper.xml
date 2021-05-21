@@ -12,13 +12,22 @@
 
   <select id="getExperiences" resultType="cn.edi.expertInfo.domain.response.ExperienceResDTO">
     SELECT
-      d.*
+      d.id,
+      d.expert_id AS expertId,
+      d.start_date AS startDate,
+      d.end_date AS endDate,
+      d.work,
+      d.education,
+      d.degree,
+      d.position,
+      d.title,
+      d.remark
     FROM
       Experience d
     <where>
       <if test="content!=null and content!=''">
         <bind name="key" value="'%'+ content +'%'"/>
-        d.name like #{key} or d.remark like #{key}
+        d.title like #{key} or d.remark like #{key}
       </if>
     </where>
     GROUP BY d.id

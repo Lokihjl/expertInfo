@@ -20,7 +20,7 @@ public class PaperResDTO implements Serializable{
     
     private String publication ;
     
-    private Date paperTime;
+    private String paperTime;
     
     private String volume ;
 

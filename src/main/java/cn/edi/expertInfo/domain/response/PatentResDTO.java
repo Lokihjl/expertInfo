@@ -22,7 +22,7 @@ public class PatentResDTO implements Serializable{
     
     private String grant ;
 
-    private Date year;
+    private String year;
     
     private String remark ;
 

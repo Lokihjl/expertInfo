@@ -15,7 +15,7 @@ public class ExpertResDTO implements Serializable{
 
     private String sex;
     
-    private Date birthday ;
+    private String birthday ;
     
     private String cardNumber ;
     
